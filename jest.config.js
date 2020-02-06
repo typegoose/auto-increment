@@ -11,13 +11,12 @@ module.exports = {
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/lib/', '/build/'],
+  testPathIgnorePatterns: ['/node_modules/', '/lib/'],
   testRegex: ".test.ts$",
   collectCoverage: false,
   collectCoverageFrom: [
-    "**/*{.ts}",
-    "**/src/**",
-    "!**/*.{d.ts,js}"
+    "**/src/**.ts",
+    "!**/*.{test.ts,d.ts,js}"
   ],
   coverageDirectory: "./coverage",
 };

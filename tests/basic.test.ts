@@ -1,8 +1,7 @@
+import { getModelForClass, plugin, prop } from '@typegoose/typegoose';
 import * as mongoose from 'mongoose';
 import { AutoIncrement } from '../src/autoIncrement';
 import { connect, disconnect } from './utils/mongooseConnect';
-import { prop, plugin, getModelForClass } from "@typegoose/typegoose";
-import { AutoIncrementOptions } from "../src/types";
 
 describe('Basic Suite', () => {
   beforeAll(async () => {
@@ -28,7 +27,7 @@ describe('Basic Suite', () => {
   });
 
   it('Basic Function Typegoose', async () => {
-    @plugin/* <AutoIncrementOptions> */(AutoIncrement, [{ field: "someIncrementedField" }])
+    @plugin/* <AutoIncrementOptions> */(AutoIncrement, [{ field: 'someIncrementedField' }])
     class SomeClass {
       @prop({ required: true })
       public someIncrementedField: number;
