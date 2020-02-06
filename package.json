@@ -20,7 +20,7 @@
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --collectCoverage",
     "test:watchCoverage": "jest --collectCoverage --watch",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "cat ./coverage/lcov.info | coveralls",
     "clean": "rimraf lib .tsbuildinfo .nyc_output coverage doc build",
     "prepare": "npm run build:all",
     "version:patch": "npm version patch -m 'Release %s'"
@@ -37,7 +37,6 @@
     "@types/mongoose": "^5.7.0"
   },
   "devDependencies": {
-    "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@typegoose/typegoose": "^6.2.2",
     "@types/jest": "^25.1.1",
     "@types/mongoose": "^5.7.0",
@@ -47,8 +46,6 @@
     "jest": "^25.1.0",
     "mongodb-memory-server": "^6.2.4",
     "mongoose": "^5.8.11",
-    "nyc": "^15.0.0",
-    "prettier": "^1.19.1",
     "rimraf": "3.0.1",
     "source-map-support": "^0.5.16",
     "ts-jest": "^25.2.0",
