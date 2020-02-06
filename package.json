@@ -1,0 +1,86 @@
+{
+  "name": "@typegoose/auto-increment",
+  "version": "0.1.0",
+  "description": "Automaticly Increment properties",
+  "main": "lib/autoIncrement.js",
+  "types": "lib/autoIncrement.d.ts",
+  "engines": {
+    "node": ">=8.10.0"
+  },
+  "files": [
+    "lib/**/*.js",
+    "lib/**/*.d.ts"
+  ],
+  "scripts": {
+    "build:dist": "npm run lint && tsc -p tsconfig.build.json",
+    "build:all": "npm run lint && tsc -p tsconfig.json",
+    "build:watchall": "tsc -w -p tsconfig.json",
+    "lint": "tslint --project tsconfig.json",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:coverage": "jest --collectCoverage",
+    "test:watchCoverage": "jest --collectCoverage --watch",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "clean": "rimraf lib .tsbuildinfo .nyc_output coverage doc build",
+    "prepare": "npm run build",
+    "version:patch": "npm version patch -m 'Release %s'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typegoose/auto-increment.git"
+  },
+  "author": "hasezoey <hasezoey@gmail.com>",
+  "contributors": [],
+  "license": "MIT",
+  "peerDependencies": {
+    "mongoose": "^5.8.11",
+    "@types/mongoose": "^5.7.0"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@typegoose/typegoose": "^6.2.2",
+    "@types/jest": "^25.1.1",
+    "@types/mongoose": "^5.7.0",
+    "@types/node": "^8.10.53",
+    "@types/semver": "^7.1.0",
+    "coveralls": "^3.0.9",
+    "jest": "^25.1.0",
+    "mongodb-memory-server": "^6.2.4",
+    "mongoose": "^5.8.11",
+    "nyc": "^15.0.0",
+    "prettier": "^1.19.1",
+    "rimraf": "3.0.1",
+    "source-map-support": "^0.5.16",
+    "ts-jest": "^25.2.0",
+    "ts-node": "^8.6.2",
+    "tslint": "6.0.0",
+    "tslint-consistent-codestyle": "^1.16.0",
+    "tslint-eslint-rules": "*5.4.0",
+    "typescript": "3.7.5"
+  },
+  "dependencies": {
+    "loglevel": "^1.6.6",
+    "tslib": "^1.10.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "typegoose",
+    "mongoose",
+    "auto-increment",
+    "id",
+    "generate",
+    "numeric",
+    "mongo",
+    "mongodb",
+    "db",
+    "auto",
+    "increment",
+    "incremented"
+  ],
+  "bugs": {
+    "url": "https://github.com/typegoose/auto-increment/issues"
+  },
+  "homepage": "https://github.com/typegoose/auto-increment"
+}
