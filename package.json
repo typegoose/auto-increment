@@ -22,7 +22,7 @@
     "test:watchCoverage": "jest --collectCoverage --watch",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "clean": "rimraf lib .tsbuildinfo .nyc_output coverage doc build",
-    "prepare": "npm run build",
+    "prepare": "npm run build:all",
     "version:patch": "npm version patch -m 'Release %s'"
   },
   "repository": {
