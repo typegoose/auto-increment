@@ -22,7 +22,7 @@ interface ExtraConnectionConfig {
 // to not duplicate code
 const staticOptions = {
   useNewUrlParser: true,
-  useFindAndModify: true,
+  useFindAndModify: false,
   useCreateIndex: true,
   useUnifiedTopology: true,
   autoIndex: true

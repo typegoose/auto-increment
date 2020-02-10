@@ -8,12 +8,14 @@ Automaticly Increment properties
 
 ## Basic Usage
 
+### Simple
+
 (mongoose)
 ```ts
 const schema = new mongoose.Schema({
   somefield: Number
 });
-schema.plugin(AutoIncrement, [{ field: 'somefield' }]);
+schema.plugin(AutoIncrementSimple, [{ field: 'somefield' }]);
 const model = mongoose.model('SomeModel', schema);
 
 const doc = await model.create({ somefield: 10 });
@@ -23,7 +25,7 @@ await doc.save(); // somefield will be 11
 
 (typegoose)
 ```ts
-@plugin(AutoIncrement, [{ field: "someIncrementedField" }])
+@plugin<AutoIncrementSimplePluginOptions>(AutoIncrementSimple, [{ field: "someIncrementedField" }])
 class SomeClass {
   @prop() // does not need to be empty
   public someIncrementedField: number;
@@ -34,6 +36,35 @@ const SomeModel = getModelForClass(SomeClass);
 const doc = await SomeModel.create({ someIncrementedField: 10 });
 
 await doc.save(); // someIncrementedField will be 11
+```
+
+### For Identification
+
+```ts
+const schema = new mongoose.Schema({
+  _id: Number,
+  somefield: Number
+});
+schema.plugin(AutoIncrementID, {});
+const model = mongoose.model('SomeModel', schema);
+
+const doc = await model.create({ somefield: 10 }); // _id will be 1
+```
+
+(typegoose)
+```ts
+@plugin<AutoIncrementOptionsID>(AutoIncrementID, {})
+class SomeClass {
+  @prop()
+  public _id: number;
+
+  @prop() // does not need to be empty
+  public someIncrementedField: number;
+}
+
+const SomeModel = getModelForClass(SomeClass);
+
+const doc = await SomeModel.create({ someIncrementedField: 10 }); // _id will be 1
 ```
 
 ## Motivation
@@ -67,9 +98,9 @@ To ask questions or just talk with us [join our Discord Server](https://discord.
 
 ## Documentation
 
-### Plugin - Options
+### AutoIncrementSimple - Options
 
-they can either be an object or an array of objects (single field / multiple fields)
+The options can either be an object or an array of objects (single field / multiple fields)
 
 #### field
 
@@ -88,3 +119,40 @@ This option is optional, default is to increment by `1`
 * Please dont add comments with `+1` or something like that, use the Reactions
 * `npm run doc` generates all documentation for all files that can be used as modules (is used for github-pages)
 * `npm run doc:all` generates documentation even for internal modules
+
+### AutoIncrementID - Options
+
+The options can only be one single object
+
+This plugin variant uses an model and an collection to store tracking(/counter) infomation to keep track of the ID in case the latest one gets deleted
+
+Note: the model used to keep track of the counter, will use the connection that the assigned schema uses
+Note: when the model is completly new, the first document will be "1", [see here as on why](https://github.com/Automattic/mongoose/issues/3617)
+
+#### incrementBy
+
+`number` default `1`
+
+This option is optional, default is to increment by `1`
+
+#### field
+
+`string`
+
+This option is optional, defaults to `_id`
+
+#### trackerCollection
+
+`string`
+
+Set the Collection the tracker should use to store tracking infomation
+
+This option is optional, defaults to `idtracker`
+
+#### trackerModelName
+
+`string`
+
+Set the ModelName to use for the tracker model
+
+This option is optional, defaults to `idtracker`
