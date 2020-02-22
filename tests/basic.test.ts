@@ -1,6 +1,6 @@
 import { getModelForClass, modelOptions, plugin, prop } from '@typegoose/typegoose';
 import * as mongoose from 'mongoose';
-import { AutoIncrementID, AutoIncrementOptionsID, AutoIncrementSimple, AutoIncrementSimplePluginOptions } from '../src/autoIncrement';
+import { AutoIncrementID, AutoIncrementIDOptions, AutoIncrementSimple, AutoIncrementSimplePluginOptions } from '../src/autoIncrement';
 import { connect, disconnect } from './utils/mongooseConnect';
 
 describe('Basic Suite', () => {
@@ -51,7 +51,7 @@ describe('Basic Suite', () => {
         _id: Number,
         somefield: Number
       });
-      schema.plugin(AutoIncrementID, {});
+      schema.plugin(AutoIncrementID, { model: 'user' });
       const model = mongoose.model('AutoIncrementID-SomeModel', schema);
 
       const doc: mongoose.Document & { somefield: number; } = await model.create({ somefield: 10 }) as any;
@@ -62,11 +62,11 @@ describe('Basic Suite', () => {
       expect(doc.somefield).toBe(10);
       expect(doc._id).toBe(1);
 
-      expect(mongoose.connection.model('idtracker')).not.toBeUndefined();
+      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
     });
 
     it('Basic Function Typegoose', async () => {
-      @plugin<AutoIncrementOptionsID>(AutoIncrementID, {})
+      @plugin<AutoIncrementIDOptions>(AutoIncrementID, { model: 'user' })
       @modelOptions({ options: { customName: 'AutoIncrementID-SomeClass' } })
       class SomeClass {
         @prop()
