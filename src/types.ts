@@ -23,6 +23,11 @@ export interface AutoIncrementIDOptions {
    */
   field?: string;
   /**
+   * The Tracker Collection to use to keep track of an counter for the ID
+   * @default identitycounters
+   */
+  trackerCollection?: string;
+  /**
    * Set the tracker model name
    * @default identitycounter
    */

@@ -71,6 +71,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
   const opt: Required<AutoIncrementIDOptions> = merge({}, {
     field: '_id',
     incrementBy: DEFAULT_INCREMENT,
+    trackerCollection: 'identitycounters',
     trackerModelName: 'identitycounter',
     model: null,
     startAt: 0
@@ -100,7 +101,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
 
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
-      model = this.db.model(opt.trackerModelName, IDSchema);
+      model = this.db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
       model.findOne({ model: opt.model, field: opt.field } as AutoIncrementIDTrackerSpec).lean()
         .then((counter: AutoIncrementIDTrackerSpec) => {
           if (!counter) {
