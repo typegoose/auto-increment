@@ -86,7 +86,7 @@ describe('Basic Suite', () => {
       expect(doc.someIncrementedField).toBe(10);
       expect(doc._id).toBe(1);
 
-      expect(mongoose.connection.model('idtracker')).not.toBeUndefined();
+      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
     });
   });
 });
