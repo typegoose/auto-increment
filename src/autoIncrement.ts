@@ -103,7 +103,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
         await model.create({
           model: modelName,
           field: opt.field,
-          count: opt.startAt > 0 ? opt.startAt - opt.incrementBy : 0
+          count: opt.startAt - opt.incrementBy
         } as AutoIncrementIDTrackerSpec);
       }
     }
