@@ -93,7 +93,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
-    const modelName = (this.constructor as any).modelName;
+    const modelName: string = (this.constructor as any).modelName;
     logger.info('modelName "%s"', modelName);
 
     if (!model) {
