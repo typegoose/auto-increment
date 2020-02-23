@@ -100,16 +100,14 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
       model = this.db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
-      model.findOne({ model: modelName, field: opt.field } as AutoIncrementIDTrackerSpec).lean()
-        .then((counter: AutoIncrementIDTrackerSpec) => {
-          if (!counter) {
-            model.create({
-              model: modelName,
-              field: opt.field,
-              count: opt.startAt - opt.incrementBy
-            } as AutoIncrementIDTrackerSpec);
-          }
-        });
+      const counter: AutoIncrementIDTrackerSpec = await model.findOne({ model: modelName, field: opt.field }).lean().exec();
+      if (!counter) {
+        await model.create({
+          model: modelName,
+          field: opt.field,
+          count: opt.startAt > 0 ? opt.startAt - opt.incrementBy : 0
+        } as AutoIncrementIDTrackerSpec);
+      }
     }
 
     // TODO:
