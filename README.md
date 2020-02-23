@@ -74,7 +74,7 @@ I started `@typegoose/auto-increment` because `mongoose-auto-increment` and `mon
 ## Requirements
 
 - Node 8.10+
-- TypeScript 3.7+ (older versions could work, but are not tested)
+- TypeScript 3.8+ (older versions could work, but are not tested)
 - mongoose 5.8+ (5.x could work, but are not tested)
 
 ## Install
@@ -147,7 +147,7 @@ This option is optional, defaults to `_id`
 
 Set the Collection the tracker should use to store tracking infomation
 
-This option is optional, defaults to `idtracker`
+This option is optional, defaults to `identitycounters`
 
 #### trackerModelName
 
@@ -155,4 +155,11 @@ This option is optional, defaults to `idtracker`
 
 Set the ModelName to use for the tracker model
 
-This option is optional, defaults to `idtracker`
+This option is optional, defaults to `identitycounter`
+
+#### startAt
+
+`number` default `0`
+
+Set the starting number of the counter
+(the first document will be this number)
