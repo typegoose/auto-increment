@@ -1,6 +1,6 @@
 import { getModelForClass, modelOptions, plugin, prop } from '@typegoose/typegoose';
 import * as mongoose from 'mongoose';
-import { AutoIncrementID, AutoIncrementOptionsID, AutoIncrementSimple, AutoIncrementSimplePluginOptions } from '../src/autoIncrement';
+import { AutoIncrementID, AutoIncrementIDOptions, AutoIncrementSimple, AutoIncrementSimplePluginOptions } from '../src/autoIncrement';
 import { connect, disconnect } from './utils/mongooseConnect';
 
 describe('Basic Suite', () => {
@@ -56,17 +56,17 @@ describe('Basic Suite', () => {
 
       const doc: mongoose.Document & { somefield: number; } = await model.create({ somefield: 10 }) as any;
       expect(doc.somefield).toBe(10);
-      expect(doc._id).toBe(1);
+      expect(doc._id).toBe(0);
 
       await doc.save();
       expect(doc.somefield).toBe(10);
-      expect(doc._id).toBe(1);
+      expect(doc._id).toBe(0);
 
-      expect(mongoose.connection.model('idtracker')).not.toBeUndefined();
+      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
     });
 
     it('Basic Function Typegoose', async () => {
-      @plugin<AutoIncrementOptionsID>(AutoIncrementID, {})
+      @plugin<AutoIncrementIDOptions>(AutoIncrementID, {})
       @modelOptions({ options: { customName: 'AutoIncrementID-SomeClass' } })
       class SomeClass {
         @prop()
@@ -80,13 +80,56 @@ describe('Basic Suite', () => {
 
       const doc = await SomeModel.create({ someIncrementedField: 10 });
       expect(doc.someIncrementedField).toBe(10);
-      expect(doc._id).toBe(1);
+      expect(doc._id).toBe(0);
 
       await doc.save();
       expect(doc.someIncrementedField).toBe(10);
-      expect(doc._id).toBe(1);
+      expect(doc._id).toBe(0);
 
-      expect(mongoose.connection.model('idtracker')).not.toBeUndefined();
+      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
+    });
+
+    it('Basic Function Mongoose With startAt', async () => {
+      const schema = new mongoose.Schema({
+        _id: Number,
+        somefield: Number
+      });
+      schema.plugin(AutoIncrementID, { startAt: 2 });
+      const model = mongoose.model('AutoIncrementID-SomeModelStartAt', schema);
+
+      const doc: mongoose.Document & { somefield: number; } = await model.create({ somefield: 10 }) as any;
+      expect(doc.somefield).toBe(10);
+      expect(doc._id).toBe(2);
+
+      await doc.save();
+      expect(doc.somefield).toBe(10);
+      expect(doc._id).toBe(2);
+
+      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
+    });
+
+    it('Basic Function Typegoose With startAt', async () => {
+      @plugin<AutoIncrementIDOptions>(AutoIncrementID, { startAt: 5 })
+      @modelOptions({ options: { customName: 'AutoIncrementID-SomeClassStartAt' } })
+      class SomeClass {
+        @prop()
+        public _id: number;
+
+        @prop({ required: true })
+        public someIncrementedField: number;
+      }
+
+      const SomeModel = getModelForClass(SomeClass);
+
+      const doc = await SomeModel.create({ someIncrementedField: 20 });
+      expect(doc.someIncrementedField).toBe(20);
+      expect(doc._id).toBe(5);
+
+      await doc.save();
+      expect(doc.someIncrementedField).toBe(20);
+      expect(doc._id).toBe(5);
+
+      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
     });
   });
 });

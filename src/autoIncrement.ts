@@ -2,7 +2,7 @@ import { merge } from 'lodash';
 import * as mongoose from 'mongoose';
 import { isNullOrUndefined } from 'util';
 import { logger } from './logSettings';
-import { AutoIncrementIDTrackerSpec, AutoIncrementOptionsID, AutoIncrementOptionsSimple } from './types';
+import { AutoIncrementIDOptions, AutoIncrementIDTrackerSpec, AutoIncrementOptionsSimple } from './types';
 
 const DEFAULT_INCREMENT = 1;
 
@@ -54,11 +54,11 @@ export function AutoIncrementSimple(
 
 /** The Schema used for the trackers */
 const IDSchema = new mongoose.Schema({
-  f: String,
-  m: String,
-  c: Number
+  field: String,
+  model: String,
+  count: Number
 }, { versionKey: false });
-IDSchema.index({ f: 1, m: 1 }, { unique: true });
+IDSchema.index({ field: 1, model: 1 }, { unique: true });
 
 /**
  * The Plugin - ID
@@ -66,14 +66,15 @@ IDSchema.index({ f: 1, m: 1 }, { unique: true });
  * @param schema The Schema
  * @param options The Options
  */
-export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncrementOptionsID): void {
+export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncrementIDOptions): void {
   /** The Options with default options applied */
-  const opt: Required<AutoIncrementOptionsID> = merge({}, {
+  const opt: Required<AutoIncrementIDOptions> = merge({}, {
     field: '_id',
     incrementBy: DEFAULT_INCREMENT,
-    trackerCollection: 'idtracker',
-    trackerModelName: 'idtracker'
-  } as Required<AutoIncrementOptionsID>, options) as Required<AutoIncrementOptionsID>;
+    trackerCollection: 'identitycounters',
+    trackerModelName: 'identitycounter',
+    startAt: 0
+  } as Required<AutoIncrementIDOptions>, options) as Required<AutoIncrementIDOptions>;
 
   // check if the field is an number
   if (!(schema.path(opt.field) instanceof mongoose.Schema.Types.Number)) {
@@ -92,20 +93,30 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
+    const modelName: string = (this.constructor as any).modelName;
+
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
       model = this.db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
+      const counter: AutoIncrementIDTrackerSpec = await model.findOne({ model: modelName, field: opt.field }).lean().exec();
+      if (!counter) {
+        await model.create({
+          model: modelName,
+          field: opt.field,
+          count: opt.startAt - opt.incrementBy
+        } as AutoIncrementIDTrackerSpec);
+      }
     }
 
     // TODO:
-    const { c: count }: { c: number; } = await model.findOneAndUpdate({
-      f: opt.field,
-      m: (this.constructor as any).modelName
+    const { count }: { count: number; } = await model.findOneAndUpdate({
+      field: opt.field,
+      model: modelName
     } as AutoIncrementIDTrackerSpec, {
-      $inc: { c: opt.incrementBy }
+      $inc: { count: opt.incrementBy }
     }, {
       new: true,
-      fields: { c: 1, _id: 0 },
+      fields: { count: 1, _id: 0 },
       upsert: true,
       setDefaultsOnInsert: true
     }).lean().exec();
