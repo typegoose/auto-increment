@@ -108,7 +108,6 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       }
     }
 
-    // TODO:
     const { count }: { count: number; } = await model.findOneAndUpdate({
       field: opt.field,
       model: modelName
