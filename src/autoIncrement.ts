@@ -94,7 +94,6 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     }
 
     const modelName: string = (this.constructor as any).modelName;
-    logger.info('modelName "%s"', modelName);
 
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
