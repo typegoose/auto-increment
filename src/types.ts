@@ -35,7 +35,7 @@ export interface AutoIncrementIDOptions {
   /**
    * model to configure the plugin for
    */
-  model: string;
+  model?: string;
   /**
    * the count should start at
    * @default 0

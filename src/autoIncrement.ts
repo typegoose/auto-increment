@@ -77,11 +77,6 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     startAt: 0
   } as Required<AutoIncrementIDOptions>, options) as Required<AutoIncrementIDOptions>;
 
-  // check if the model where auto increment should get applied provided
-  if (!opt.model) {
-    throw new Error('model must be set');
-  }
-
   // check if the field is an number
   if (!(schema.path(opt.field) instanceof mongoose.Schema.Types.Number)) {
     throw new Error(`Field "${opt.field}" is not an SchemaNumber!`);
@@ -99,14 +94,17 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
+    const modelName = opt.model || (this.constructor as any).modelName;
+    logger.info('modelName "%s"', modelName);
+
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
       model = this.db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
-      model.findOne({ model: opt.model, field: opt.field } as AutoIncrementIDTrackerSpec).lean()
+      model.findOne({ model: modelName, field: opt.field } as AutoIncrementIDTrackerSpec).lean()
         .then((counter: AutoIncrementIDTrackerSpec) => {
           if (!counter) {
             model.create({
-              model: opt.model,
+              model: modelName,
               field: opt.field,
               count: opt.startAt - opt.incrementBy
             } as AutoIncrementIDTrackerSpec);
@@ -117,7 +115,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     // TODO:
     const { count }: { count: number; } = await model.findOneAndUpdate({
       field: opt.field,
-      model: (this.constructor as any).modelName
+      model: modelName
     } as AutoIncrementIDTrackerSpec, {
       $inc: { count: opt.incrementBy }
     }, {

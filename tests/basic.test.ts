@@ -51,7 +51,7 @@ describe('Basic Suite', () => {
         _id: Number,
         somefield: Number
       });
-      schema.plugin(AutoIncrementID, { model: 'user' });
+      schema.plugin(AutoIncrementID, {});
       const model = mongoose.model('AutoIncrementID-SomeModel', schema);
 
       const doc: mongoose.Document & { somefield: number; } = await model.create({ somefield: 10 }) as any;
@@ -66,7 +66,7 @@ describe('Basic Suite', () => {
     });
 
     it('Basic Function Typegoose', async () => {
-      @plugin<AutoIncrementIDOptions>(AutoIncrementID, { model: 'user' })
+      @plugin<AutoIncrementIDOptions>(AutoIncrementID, {})
       @modelOptions({ options: { customName: 'AutoIncrementID-SomeClass' } })
       class SomeClass {
         @prop()
