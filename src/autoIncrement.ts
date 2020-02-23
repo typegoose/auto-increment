@@ -73,7 +73,6 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     incrementBy: DEFAULT_INCREMENT,
     trackerCollection: 'identitycounters',
     trackerModelName: 'identitycounter',
-    model: null,
     startAt: 0
   } as Required<AutoIncrementIDOptions>, options) as Required<AutoIncrementIDOptions>;
 
@@ -94,7 +93,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
-    const modelName = opt.model || (this.constructor as any).modelName;
+    const modelName = (this.constructor as any).modelName;
     logger.info('modelName "%s"', modelName);
 
     if (!model) {

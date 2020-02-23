@@ -33,10 +33,6 @@ export interface AutoIncrementIDOptions {
    */
   trackerModelName?: string;
   /**
-   * model to configure the plugin for
-   */
-  model?: string;
-  /**
    * the count should start at
    * @default 0
    */
