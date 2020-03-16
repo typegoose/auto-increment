@@ -97,7 +97,8 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
 
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
-      model = this.db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
+      const db: mongoose.Connection = this.db ?? (this as any).ownerDocument().db;
+      model = db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
       const counter: AutoIncrementIDTrackerSpec = await model.findOne({ model: modelName, field: opt.field }).lean().exec();
       if (!counter) {
         await model.create({

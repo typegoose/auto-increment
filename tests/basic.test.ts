@@ -131,6 +131,35 @@ describe('Basic Suite', () => {
 
       expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
     });
+
+    it('Should work if used in an sub-document', async () => {
+      @plugin<AutoIncrementIDOptions>(AutoIncrementID, { startAt: 1 })
+      @modelOptions({ options: { customName: 'AutoIncrementID-SubDoc' } })
+      class SubDoc {
+        @prop()
+        public _id: number;
+
+        @prop({ required: true })
+        public someField: string;
+      }
+
+      @modelOptions({ options: { customName: 'AutoIncrementID-Parent' } })
+      class Parent {
+        @prop({ required: true })
+        public nested: SubDoc;
+      }
+
+      const ParentModel = getModelForClass(Parent);
+
+      const doc1 = await ParentModel.create({ nested: { someField: 'hello1' } });
+      expect(doc1.nested._id).toBe(1);
+
+      await doc1.save();
+      expect(doc1.nested._id).toBe(1);
+
+      const doc2 = await ParentModel.create({ nested: { someField: 'hello2' } });
+      expect(doc2.nested._id).toBe(2);
+    });
   });
 });
 
