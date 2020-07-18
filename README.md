@@ -11,6 +11,7 @@ Automaticly Increment properties
 ### Simple
 
 (mongoose)
+
 ```ts
 const schema = new mongoose.Schema({
   somefield: Number
@@ -24,8 +25,9 @@ await doc.save(); // somefield will be 11
 ```
 
 (typegoose)
+
 ```ts
-@plugin<AutoIncrementSimplePluginOptions>(AutoIncrementSimple, [{ field: "someIncrementedField" }])
+@plugin(AutoIncrementSimple, [{ field: "someIncrementedField" }])
 class SomeClass {
   @prop() // does not need to be empty
   public someIncrementedField: number;
@@ -52,8 +54,9 @@ const doc = await model.create({ somefield: 10 }); // _id will be 1
 ```
 
 (typegoose)
+
 ```ts
-@plugin<AutoIncrementOptionsID>(AutoIncrementID, {})
+@plugin(AutoIncrementID, {})
 class SomeClass {
   @prop()
   public _id: number;
@@ -74,8 +77,8 @@ I started `@typegoose/auto-increment` because `mongoose-auto-increment` and `mon
 ## Requirements
 
 - Node 8.10+
-- TypeScript 3.8+ (older versions could work, but are not tested)
-- mongoose 5.8+ (5.x could work, but are not tested)
+- TypeScript 3.9+ (older versions could work, but are not tested)
+- mongoose 5.9+ (5.x could work, but are not tested)
 
 ## Install
 

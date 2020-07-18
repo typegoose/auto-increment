@@ -1,6 +1,6 @@
 import { getModelForClass, modelOptions, plugin, prop } from '@typegoose/typegoose';
 import * as mongoose from 'mongoose';
-import { AutoIncrementID, AutoIncrementIDOptions, AutoIncrementSimple, AutoIncrementSimplePluginOptions } from '../src/autoIncrement';
+import { AutoIncrementID, AutoIncrementSimple } from '../src/autoIncrement';
 import { connect, disconnect } from './utils/mongooseConnect';
 
 describe('Basic Suite', () => {
@@ -28,7 +28,7 @@ describe('Basic Suite', () => {
     });
 
     it('Basic Function Typegoose', async () => {
-      @plugin<AutoIncrementSimplePluginOptions>(AutoIncrementSimple, [{ field: 'someIncrementedField' }])
+      @plugin(AutoIncrementSimple, [{ field: 'someIncrementedField' }])
       @modelOptions({ options: { customName: 'AutoIncrementSimple-SomeClass' } })
       class SomeClass {
         @prop({ required: true })
@@ -66,14 +66,14 @@ describe('Basic Suite', () => {
     });
 
     it('Basic Function Typegoose', async () => {
-      @plugin<AutoIncrementIDOptions>(AutoIncrementID, {})
+      @plugin(AutoIncrementID, {})
       @modelOptions({ options: { customName: 'AutoIncrementID-SomeClass' } })
       class SomeClass {
         @prop()
-        public _id: number;
+        public _id?: number;
 
         @prop({ required: true })
-        public someIncrementedField: number;
+        public someIncrementedField!: number;
       }
 
       const SomeModel = getModelForClass(SomeClass);
@@ -109,14 +109,14 @@ describe('Basic Suite', () => {
     });
 
     it('Basic Function Typegoose With startAt', async () => {
-      @plugin<AutoIncrementIDOptions>(AutoIncrementID, { startAt: 5 })
+      @plugin(AutoIncrementID, { startAt: 5 })
       @modelOptions({ options: { customName: 'AutoIncrementID-SomeClassStartAt' } })
       class SomeClass {
         @prop()
-        public _id: number;
+        public _id?: number;
 
         @prop({ required: true })
-        public someIncrementedField: number;
+        public someIncrementedField!: number;
       }
 
       const SomeModel = getModelForClass(SomeClass);
@@ -133,20 +133,20 @@ describe('Basic Suite', () => {
     });
 
     it('Should work if used in an sub-document', async () => {
-      @plugin<AutoIncrementIDOptions>(AutoIncrementID, { startAt: 1 })
+      @plugin(AutoIncrementID, { startAt: 1 })
       @modelOptions({ options: { customName: 'AutoIncrementID-SubDoc' } })
       class SubDoc {
         @prop()
-        public _id: number;
+        public _id?: number;
 
         @prop({ required: true })
-        public someField: string;
+        public someField!: string;
       }
 
       @modelOptions({ options: { customName: 'AutoIncrementID-Parent' } })
       class Parent {
         @prop({ required: true })
-        public nested: SubDoc;
+        public nested!: SubDoc;
       }
 
       const ParentModel = getModelForClass(Parent);

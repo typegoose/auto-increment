@@ -43,7 +43,7 @@ export function AutoIncrementSimple(
   }
   schema.pre('save', function AutoIncrementPreSaveSimple() { // to have an name to the function if debugging
     if (!this.isNew) {
-      logger.info('Starting to increment "%s"', this.modelName);
+      logger.info('Starting to increment "%s"', (this.constructor as mongoose.Model<any>).modelName);
       for (const field of fields) {
         logger.info('Incrementing "%s" by %d', field.field, field.incrementBy);
         this[field.field] += field.incrementBy;
