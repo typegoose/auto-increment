@@ -76,7 +76,7 @@ I started `@typegoose/auto-increment` because `mongoose-auto-increment` and `mon
 
 ## Requirements
 
-- Node 8.10+
+- Node 10.15+
 - TypeScript 3.9+ (older versions could work, but are not tested)
 - mongoose 5.9+ (5.x could work, but are not tested)
 

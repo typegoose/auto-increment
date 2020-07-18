@@ -5,7 +5,7 @@
   "main": "lib/autoIncrement.js",
   "types": "lib/autoIncrement.d.ts",
   "engines": {
-    "node": ">=8.10.0"
+    "node": ">=10.15.0"
   },
   "files": [
     "lib/**/*.js",
