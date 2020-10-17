@@ -1,4 +1,3 @@
-import { merge } from 'lodash';
 import * as mongoose from 'mongoose';
 import { isNullOrUndefined } from 'util';
 import { logger } from './logSettings';
@@ -70,13 +69,14 @@ export const AutoIncrementIDSkipSymbol = Symbol('AutoIncrementIDSkip');
  */
 export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncrementIDOptions): void {
   /** The Options with default options applied */
-  const opt: Required<AutoIncrementIDOptions> = merge({}, {
+  const opt: Required<AutoIncrementIDOptions> = {
     field: '_id',
     incrementBy: DEFAULT_INCREMENT,
     trackerCollection: 'identitycounters',
     trackerModelName: 'identitycounter',
-    startAt: 0
-  } as Required<AutoIncrementIDOptions>, options) as Required<AutoIncrementIDOptions>;
+    startAt: 0,
+    ...options
+  };
 
   // check if the field is an number
   if (!(schema.path(opt.field) instanceof mongoose.Schema.Types.Number)) {
