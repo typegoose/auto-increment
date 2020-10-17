@@ -117,12 +117,6 @@ This option is always required to get which field to increment
 
 This option is optional, default is to increment by `1`
 
-## Notes
-
-* Please dont add comments with `+1` or something like that, use the Reactions
-* `npm run doc` generates all documentation for all files that can be used as modules (is used for github-pages)
-* `npm run doc:all` generates documentation even for internal modules
-
 ### AutoIncrementID - Options
 
 The options can only be one single object
@@ -166,3 +160,9 @@ This option is optional, defaults to `identitycounter`
 
 Set the starting number of the counter
 (the first document will be this number)
+
+## Notes
+
+* Please dont add comments with `+1` or something like that, use the Reactions
+* `npm run doc` generates all documentation for all files that can be used as modules (is used for github-pages)
+* `npm run doc:all` generates documentation even for internal modules
