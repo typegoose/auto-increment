@@ -126,6 +126,17 @@ This plugin variant uses an model and an collection to store tracking(/counter) 
 Note: the model used to keep track of the counter, will use the connection that the assigned schema uses
 Note: when the model is completly new, the first document will be "1", [see here as on why](https://github.com/Automattic/mongoose/issues/3617)
 
+if the hook should be skipped, use `AutoIncrementIDSkipSymbol`
+
+```ts
+const doc = new Model();
+
+doc[AutoIncrementIDSkipSymbol] = true;
+await doc.save();
+```
+
+Note: `AutoIncrementIDSkipSymbol` can also be set inside hooks, but hooks might be called before others
+
 #### incrementBy
 
 `number` default `1`

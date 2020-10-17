@@ -60,6 +60,8 @@ const IDSchema = new mongoose.Schema({
 }, { versionKey: false });
 IDSchema.index({ field: 1, model: 1 }, { unique: true });
 
+export const AutoIncrementIDSkipSymbol = Symbol('AutoIncrementIDSkip');
+
 /**
  * The Plugin - ID
  * Increments an counter in an tracking collection
@@ -108,6 +110,12 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
 
     if (!this.isNew) {
       logger.info('Document is not new, not incrementing');
+
+      return;
+    }
+
+    if (typeof this[AutoIncrementIDSkipSymbol] === 'boolean' && AutoIncrementIDSkipSymbol) {
+      logger.info('Symbol "AutoIncrementIDSkipSymbol" is set to "true", skipping');
 
       return;
     }
