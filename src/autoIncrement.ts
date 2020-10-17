@@ -87,11 +87,6 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
 
   schema.pre('save', async function AutoIncrementPreSaveID(): Promise<void> {
     logger.info('AutoIncrementID PreSave');
-    if (!this.isNew) {
-      logger.info('Document is not new, not incrementing');
-
-      return;
-    }
 
     const modelName: string = (this.constructor as any).modelName;
 
@@ -109,6 +104,12 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
           count: opt.startAt - opt.incrementBy
         } as AutoIncrementIDTrackerSpec);
       }
+    }
+
+    if (!this.isNew) {
+      logger.info('Document is not new, not incrementing');
+
+      return;
     }
 
     const { count }: { count: number; } = await model.findOneAndUpdate({
