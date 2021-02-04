@@ -105,6 +105,8 @@ To ask questions or just talk with us [join our Discord Server](https://discord.
 
 The options can either be an object or an array of objects (single field / multiple fields)
 
+Note: This function will only increment if the document is not new, this is to apply the default value
+
 #### field
 
 `string`
