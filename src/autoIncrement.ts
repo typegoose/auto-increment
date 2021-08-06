@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { logger } from './logSettings';
-import { AutoIncrementIDOptions, AutoIncrementIDTrackerSpec, AutoIncrementOptionsSimple } from './types';
+import type { AutoIncrementIDOptions, AutoIncrementIDTrackerSpecDoc, AutoIncrementOptionsSimple } from './types';
 
 const DEFAULT_INCREMENT = 1;
 
@@ -95,7 +95,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     throw new Error(`Field "${opt.field}" is not an SchemaNumber!`);
   }
 
-  let model: mongoose.Model<mongoose.Document & AutoIncrementIDTrackerSpec>;
+  let model: mongoose.Model<AutoIncrementIDTrackerSpecDoc>;
 
   logger.info('AutoIncrementID called with options %O', opt);
 
@@ -108,16 +108,23 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
       // needs to be done, otherwise "undefiend" error if the plugin is used in an sub-document
       const db: mongoose.Connection = this.db ?? (this as any).ownerDocument().db;
-      model = db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
+      model = db.model<AutoIncrementIDTrackerSpecDoc>(opt.trackerModelName, IDSchema, opt.trackerCollection);
       // test if the counter document already exists
-      const counter = await model.findOne({ model: modelName, field: opt.field }).lean().exec();
+      const counter = await model
+        .findOne({
+          // @ts-expect-error In Mongoose-types "model" property seems to be reserved?
+          model: modelName,
+          field: opt.field,
+        })
+        .lean()
+        .exec();
 
       if (!counter) {
         await model.create({
           model: modelName,
           field: opt.field,
           count: opt.startAt - opt.incrementBy,
-        } as AutoIncrementIDTrackerSpec);
+        });
       }
     }
 
@@ -133,12 +140,13 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
-    const leandoc: { count: number } | null = await model
+    const leandoc: { count: number } = (await model
       .findOneAndUpdate(
         {
           field: opt.field,
+          // @ts-expect-error In Mongoose-types "model" property seems to be reserved?
           model: modelName,
-        } as AutoIncrementIDTrackerSpec,
+        },
         {
           $inc: { count: opt.incrementBy },
         },
@@ -150,7 +158,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
         }
       )
       .lean()
-      .exec();
+      .exec()) as any; // it seems like "FindAndModifyWriteOpResultObject" does not have a "count" property
 
     if (isNullOrUndefined(leandoc)) {
       throw new Error(`"findOneAndUpdate" incrementing count failed for "${modelName}" on field "${opt.field}"`);
