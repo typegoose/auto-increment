@@ -1,17 +1,8 @@
 import { getModelForClass, modelOptions, plugin, prop } from '@typegoose/typegoose';
 import * as mongoose from 'mongoose';
 import { AutoIncrementID, AutoIncrementSimple } from '../src/autoIncrement';
-import { connect, disconnect } from './utils/mongooseConnect';
 
 describe('Basic Suite', () => {
-  beforeAll(async () => {
-    await connect();
-  });
-
-  afterAll(async () => {
-    await disconnect();
-  });
-
   describe('AutoIncrementSimple', () => {
     it('Basic Function Mongoose', async () => {
       const schema = new mongoose.Schema({
