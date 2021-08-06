@@ -21,7 +21,7 @@
     "test:watchCoverage": "jest --collectCoverage --watch",
     "coverage": "cat ./coverage/lcov.info | coveralls",
     "clean": "rimraf lib .tsbuildinfo coverage doc build",
-    "prepare": "npm run build",
+    "prepare": "npm run build && husky install",
     "version:patch": "npm run build:dist && npm version patch -m 'Release %s'"
   },
   "repository": {
@@ -54,7 +54,12 @@
     "rimraf": "3.0.2",
     "source-map-support": "^0.5.19",
     "ts-jest": "^27.0.4",
-    "typescript": "4.0.3"
+    "typescript": "4.0.3",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.1",
+    "commitlint": "^13.1.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0"
   },
   "dependencies": {
     "loglevel": "^1.7.0",
