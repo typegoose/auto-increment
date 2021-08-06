@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@typegoose/typegoose": "~7.3.5",
-    "@types/jest": "^26.0.14",
+    "@types/jest": "^26.0.24",
     "@types/mongodb": "~3.6.x",
     "@types/mongoose": "~5.7.36",
     "@types/node": "^10.17.16",
