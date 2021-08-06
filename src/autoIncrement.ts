@@ -133,7 +133,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
-    const { count }: { count: number } = await model
+    const leandoc: { count: number } | null = await model
       .findOneAndUpdate(
         {
           field: opt.field,
@@ -152,8 +152,12 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       .lean()
       .exec();
 
-    logger.info('Setting "%s" to "%d"', opt.field, count);
-    this[opt.field] = count;
+    if (isNullOrUndefined(leandoc)) {
+      throw new Error(`"findOneAndUpdate" incrementing count failed for "${modelName}" on field "${opt.field}"`);
+    }
+
+    logger.info('Setting "%s" to "%d"', opt.field, leandoc.count);
+    this[opt.field] = leandoc.count;
 
     return;
   });
