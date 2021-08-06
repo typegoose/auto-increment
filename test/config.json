@@ -1,0 +1,11 @@
+{
+  "Memory": false,
+  "DataBase": "auto-incrementTest",
+  "Port": 27017,
+  "Auth": {
+    "DB": "",
+    "User": "",
+    "Passwd": ""
+  },
+  "IP": "localhost"
+}

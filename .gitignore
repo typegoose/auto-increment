@@ -166,7 +166,7 @@ lib
 .tsbuildinfo
 
 # the config
-tests/config.json
+test/config.json
 
 # typedoc docs folder
 doc/
