@@ -1,3 +1,10 @@
+## [0.8.0](https://github.com/typegoose/auto-increment/compare/v0.7.0...v0.8.0) (2021-08-06)
+
+
+### Dependencies
+
+* **mongoose:** update to 5.10.18 ([de2747d](https://github.com/typegoose/auto-increment/commit/de2747df7f50a7a56f5c655a09197a50d0aec443))
+
 ## [0.7.0](https://github.com/typegoose/auto-increment/compare/v0.6.0...v0.7.0) (2021-08-06)
 
 
