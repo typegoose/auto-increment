@@ -28,7 +28,7 @@ jobs:
       - name: Run Audit
         run: (yarn audit || exit 0)
       - name: Test Compiling Everything
-        run: yarn run build:all
+        run: yarn run build:tests
       - name: Lint
         run: yarn run lint
       - name: Test
