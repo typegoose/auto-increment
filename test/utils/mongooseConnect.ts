@@ -25,7 +25,7 @@ const staticOptions = {
   useFindAndModify: false,
   useCreateIndex: true,
   useUnifiedTopology: true,
-  autoIndex: true
+  autoIndex: true,
 } as mongoose.ConnectionOptions;
 
 /**
@@ -44,11 +44,12 @@ export async function connect(extraConfig: ExtraConnectionConfig = {}): Promise<
   } else {
     // use external already running database
     const options = Object.assign({}, staticOptions);
+
     if (config?.Auth?.User?.length > 0) {
       Object.assign(options, {
         user: config.Auth.User,
         pass: config.Auth.Passwd,
-        authSource: config.Auth.DB
+        authSource: config.Auth.DB,
       });
     }
 
@@ -75,6 +76,7 @@ export async function connect(extraConfig: ExtraConnectionConfig = {}): Promise<
  */
 export async function disconnect(): Promise<void> {
   await mongoose.disconnect();
+
   if (config.Memory || !isNullOrUndefined(instance)) {
     await instance.stop();
   }
@@ -89,7 +91,8 @@ async function firstConnect() {
   isFirst = false;
   await mongoose.connection.db.dropDatabase(); // to always have a clean database
 
-  await Promise.all( // recreate the indexes that were dropped
+  await Promise.all(
+    // recreate the indexes that were dropped
     Object.keys(mongoose.models).map(async (modelName) => {
       await mongoose.models[modelName].ensureIndexes();
     })

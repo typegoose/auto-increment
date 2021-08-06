@@ -33,6 +33,7 @@ export function AutoIncrementSimple(
   // check if all fields are valid
   for (const field of fields) {
     const schemaField = schema.path(field.field);
+
     // check if the field is even existing
     if (isNullOrUndefined(schemaField)) {
       throw new Error(`Field "${field.field}" does not exists on the Schema!`);
@@ -47,7 +48,8 @@ export function AutoIncrementSimple(
       field.incrementBy = DEFAULT_INCREMENT;
     }
   }
-  schema.pre('save', function AutoIncrementPreSaveSimple() { // to have an name to the function if debugging
+  // to have an name to the function if debugging
+  schema.pre('save', function AutoIncrementPreSaveSimple() {
     if (!this.isNew) {
       logger.info('Starting to increment "%s"', (this.constructor as mongoose.Model<any>).modelName);
       for (const field of fields) {
@@ -59,11 +61,14 @@ export function AutoIncrementSimple(
 }
 
 /** The Schema used for the trackers */
-const IDSchema = new mongoose.Schema({
-  field: String,
-  model: String,
-  count: Number
-}, { versionKey: false });
+const IDSchema = new mongoose.Schema(
+  {
+    field: String,
+    model: String,
+    count: Number,
+  },
+  { versionKey: false }
+);
 IDSchema.index({ field: 1, model: 1 }, { unique: true });
 
 export const AutoIncrementIDSkipSymbol = Symbol('AutoIncrementIDSkip');
@@ -82,7 +87,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     trackerCollection: 'identitycounters',
     trackerModelName: 'identitycounter',
     startAt: 0,
-    ...options
+    ...options,
   };
 
   // check if the field is an number
@@ -106,11 +111,12 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       model = db.model(opt.trackerModelName, IDSchema, opt.trackerCollection);
       // test if the counter document already exists
       const counter = await model.findOne({ model: modelName, field: opt.field }).lean().exec();
+
       if (!counter) {
         await model.create({
           model: modelName,
           field: opt.field,
-          count: opt.startAt - opt.incrementBy
+          count: opt.startAt - opt.incrementBy,
         } as AutoIncrementIDTrackerSpec);
       }
     }
@@ -127,17 +133,24 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
-    const { count }: { count: number; } = await model.findOneAndUpdate({
-      field: opt.field,
-      model: modelName
-    } as AutoIncrementIDTrackerSpec, {
-      $inc: { count: opt.incrementBy }
-    }, {
-      new: true,
-      fields: { count: 1, _id: 0 },
-      upsert: true,
-      setDefaultsOnInsert: true
-    }).lean().exec();
+    const { count }: { count: number } = await model
+      .findOneAndUpdate(
+        {
+          field: opt.field,
+          model: modelName,
+        } as AutoIncrementIDTrackerSpec,
+        {
+          $inc: { count: opt.incrementBy },
+        },
+        {
+          new: true,
+          fields: { count: 1, _id: 0 },
+          upsert: true,
+          setDefaultsOnInsert: true,
+        }
+      )
+      .lean()
+      .exec();
 
     logger.info('Setting "%s" to "%d"', opt.field, count);
     this[opt.field] = count;
