@@ -41,7 +41,6 @@
     "@types/mongodb": "~3.6.x",
     "@types/mongoose": "~5.7.36",
     "@types/node": "^10.17.16",
-    "@types/semver": "^7.3.4",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
     "@typescript-eslint/parser": "^4.28.5",
     "coveralls": "^3.1.0",
