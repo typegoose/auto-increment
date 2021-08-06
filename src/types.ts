@@ -43,7 +43,7 @@ export interface AutoIncrementIDOptions {
 
 export interface AutoIncrementIDTrackerSpec {
   /** The ModelName from the current model */
-  model: string;
+  modelName: string;
   /** The field in the schema */
   field: string;
   /** Current Tracker count */

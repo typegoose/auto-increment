@@ -61,15 +61,15 @@ export function AutoIncrementSimple(
 }
 
 /** The Schema used for the trackers */
-const IDSchema = new mongoose.Schema(
+const IDSchema = new mongoose.Schema<AutoIncrementIDTrackerSpecDoc>(
   {
     field: String,
-    model: String,
+    modelName: String,
     count: Number,
   },
   { versionKey: false }
 );
-IDSchema.index({ field: 1, model: 1 }, { unique: true });
+IDSchema.index({ field: 1, modelName: 1 }, { unique: true });
 
 export const AutoIncrementIDSkipSymbol = Symbol('AutoIncrementIDSkip');
 
@@ -112,8 +112,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       // test if the counter document already exists
       const counter = await model
         .findOne({
-          // @ts-expect-error In Mongoose-types "model" property seems to be reserved?
-          model: modelName,
+          modelName: modelName,
           field: opt.field,
         })
         .lean()
@@ -121,7 +120,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
 
       if (!counter) {
         await model.create({
-          model: modelName,
+          modelName: modelName,
           field: opt.field,
           count: opt.startAt - opt.incrementBy,
         });
@@ -144,8 +143,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       .findOneAndUpdate(
         {
           field: opt.field,
-          // @ts-expect-error In Mongoose-types "model" property seems to be reserved?
-          model: modelName,
+          modelName: modelName,
         },
         {
           $inc: { count: opt.incrementBy },
