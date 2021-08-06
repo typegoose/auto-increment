@@ -123,7 +123,7 @@ This option is optional, default is to increment by `1`
 
 The options can only be one single object
 
-This plugin variant uses an model and an collection to store tracking(/counter) infomation to keep track of the ID in case the latest one gets deleted
+This plugin variant uses a model and a collection to store tracking(/counter) infomation to keep track of the ID in case the latest one gets deleted
 
 Note: the model used to keep track of the counter, will use the connection that the assigned schema uses
 Note: when the model is completly new, the first document will be "1", [see here as on why](https://github.com/Automattic/mongoose/issues/3617)
