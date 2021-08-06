@@ -1,3 +1,16 @@
+## [0.9.0](https://github.com/typegoose/auto-increment/compare/v0.8.0...v0.9.0) (2021-08-06)
+
+
+### Dependencies
+
+* **mongoose:** update to 5.13.3 ([7f24c9a](https://github.com/typegoose/auto-increment/commit/7f24c9a622df17455d0db5e4d6e020aef2dc1a8c))
+
+
+### Fixes
+
+* **autoIncrement:** rename field "model" to "modelName" to fix some conflicts ([bd66495](https://github.com/typegoose/auto-increment/commit/bd6649558043f87a078d83cd08440a262c591940))
+* **README:** fix requirements section ([3aec24d](https://github.com/typegoose/auto-increment/commit/3aec24ddd4cd8d93fb566292bfde689f0edb0010))
+
 ## [0.8.0](https://github.com/typegoose/auto-increment/compare/v0.7.0...v0.8.0) (2021-08-06)
 
 
