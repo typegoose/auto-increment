@@ -1,3 +1,12 @@
+## [0.11.0](https://github.com/typegoose/auto-increment/compare/v0.10.0...v0.11.0) (2021-09-23)
+
+
+### Dependencies
+
+* **@types/node:** update to 12.12.6 ([d2b20dc](https://github.com/typegoose/auto-increment/commit/d2b20dc4089323010bd802803d0dd9a5a257f232))
+* **mongoose:** update to 6.0.7 ([b14fe24](https://github.com/typegoose/auto-increment/commit/b14fe24e16cd742d64b625d709873c4dabad4508))
+* **typescript:** update to 4.4.3 ([96020b8](https://github.com/typegoose/auto-increment/commit/96020b88c201c224e024ba72a8bee95f5df1b789))
+
 ## [0.10.0](https://github.com/typegoose/auto-increment/compare/v0.9.0...v0.10.0) (2021-09-23)
 
 
