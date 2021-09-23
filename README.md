@@ -1,7 +1,7 @@
 # Typegoose Automatic Increment
 
 [![Build Status](https://github.com/typegoose/auto-increment/actions/workflows/tests.yml/badge.svg)](https://github.com/typegoose/auto-increment/actions/workflows/tests.yml)
-[![Coverage Status](https://coveralls.io/repos/github/typegoose/auto-increment/badge.svg?branch=master#feb282019)](https://coveralls.io/github/typegoose/auto-increment?branch=master)
+[![codecov.io](https://codecov.io/github/typegoose/auto-increment/coverage.svg?branch=master)](https://codecov.io/github/typegoose/auto-increment?branch=master)
 [![npm](https://img.shields.io/npm/dt/@typegoose/auto-increment.svg)](https://www.npmjs.com/package/@typegoose/auto-increment)
 
 Automaticly Increment properties
