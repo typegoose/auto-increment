@@ -1,3 +1,20 @@
+## [0.10.0](https://github.com/typegoose/auto-increment/compare/v0.9.0...v0.10.0) (2021-09-23)
+
+
+### Dependencies
+
+* **@typegoose/typegoose:** update to 8.3.0 ([d3f1497](https://github.com/typegoose/auto-increment/commit/d3f1497f71540869e8161c8f7f91a860fa47385d))
+* **@types/jest:** update to 27.0.2 ([17be532](https://github.com/typegoose/auto-increment/commit/17be5326efddee0d8d822c2f66a943ae1b18149d))
+* **@typescript-eslint/*:** update to 4.31.2 ([1f1e8ca](https://github.com/typegoose/auto-increment/commit/1f1e8ca1497144dc6fd161d2663267ab3fc4c47b))
+* **eslint-plugin-prettier:** update to 4.0.0 ([7bfac9d](https://github.com/typegoose/auto-increment/commit/7bfac9d726c3dd1e3426dca1f04c7fddcbdcb2fe))
+* **husky:** update to 7.0.2 ([9bd6707](https://github.com/typegoose/auto-increment/commit/9bd67071738f9712eb115ba74c91fd78332ac1fa))
+* **jest:** update to 27.2.1 ([f2ca417](https://github.com/typegoose/auto-increment/commit/f2ca417d1d683eddf1f924036a5c9a54d8118a8e))
+* **mongodb-memory-server:** update to 7.4.1 ([b0ada5c](https://github.com/typegoose/auto-increment/commit/b0ada5cce343dd629921e13da88edc757d82eaf6))
+* **mongoose:** update to 5.13.8 ([b553900](https://github.com/typegoose/auto-increment/commit/b5539003395d9deb3293420c8f7293a3c6ad4430))
+* **prettier:** update to 2.4.1 ([c0f31f2](https://github.com/typegoose/auto-increment/commit/c0f31f23b2f513a30a1d1ee3fe1cc7b641b4d5dc))
+* **semantic-release:** update to 17.4.7 ([b99653a](https://github.com/typegoose/auto-increment/commit/b99653a259b279386d61cd251556a378f7579c47))
+* **ts-jest:** update to 27.0.5 ([51314d5](https://github.com/typegoose/auto-increment/commit/51314d562fdf014df31ca003e84102d734126c9d))
+
 ## [0.9.0](https://github.com/typegoose/auto-increment/compare/v0.8.0...v0.9.0) (2021-08-06)
 
 
