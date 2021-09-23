@@ -64,6 +64,7 @@ export function AutoIncrementSimple(
 const IDSchema = new mongoose.Schema<AutoIncrementIDTrackerSpecDoc>(
   {
     field: String,
+    // @ts-expect-error somehow "modelName" gets removed from the type
     modelName: String,
     count: Number,
   },
