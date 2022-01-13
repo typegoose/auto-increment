@@ -1280,13 +1280,13 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.2.tgz#423c77877d0569db20e1fc80885ac4118314010e"
   integrity sha512-eZxlbI8GZscaGS7kkc/trHTT5xgrjH3/1n2JDwusC9iahPKWMRvRjJSAN5mCXviuTGQ/lHnhvv8Q1YTpnfz9gA==
 
-"@typegoose/typegoose@~9.0.1":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/@typegoose/typegoose/-/typegoose-9.0.1.tgz#f8f4f02f727f0fd855241444065d92e831c1bd98"
-  integrity sha512-0yzUWeTKB/BDhdKuzkwdPDXqWp3f7Gp5u3tgFpHqmEGkGjTnXNxFOp8+QjwTb+0KXUXi8043VP07R6qSMOe2YA==
+"@typegoose/typegoose@~9.4.0":
+  version "9.4.0"
+  resolved "https://registry.yarnpkg.com/@typegoose/typegoose/-/typegoose-9.4.0.tgz#7c44a2ed54c83c59a07bf86ca7d1088caf1189ac"
+  integrity sha512-Jazwurq+RI2M4igLioQezQGb2ZGwZuhE4wPpwllez+rnVc9kSWmrc0Iuc9qWfdN8cCKed6Hy4UxJRwPYqOrgHg==
   dependencies:
     lodash "^4.17.20"
-    loglevel "^1.7.0"
+    loglevel "^1.8.0"
     reflect-metadata "^0.1.13"
     semver "^7.3.2"
     tslib "^2.3.1"
@@ -4650,7 +4650,7 @@ log-update@^4.0.0:
     slice-ansi "^4.0.0"
     wrap-ansi "^6.2.0"
 
-loglevel@^1.7.0, loglevel@^1.8.0:
+loglevel@^1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.8.0.tgz#e7ec73a57e1e7b419cb6c6ac06bf050b67356114"
   integrity sha512-G6A/nJLRgWOuuwdNuA6koovfEV1YpqqAG4pRUlFaz3jj2QNZ8M4vBqnVA+HBTmU/AMNUtlOsMmSpF6NyOjztbA==
