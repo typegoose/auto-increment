@@ -30,7 +30,7 @@
   "contributors": [],
   "license": "MIT",
   "peerDependencies": {
-    "mongoose": "~6.0.7"
+    "mongoose": "~6.1.3"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.0.2",
@@ -54,7 +54,7 @@
     "jest": "^27.4.7",
     "lint-staged": "^11.2.6",
     "mongodb-memory-server": "^8.1.0",
-    "mongoose": "~6.0.7",
+    "mongoose": "~6.1.3",
     "prettier": "^2.5.1",
     "rimraf": "3.0.2",
     "semantic-release": "^17.4.7",
