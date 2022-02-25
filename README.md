@@ -107,13 +107,13 @@ The options can either be an object or an array of objects (single field / multi
 
 Note: This function will only increment if the document is not new, this is to apply the default value
 
-#### field
+#### field {simple-field}
 
 `string`
 
 This option is always required to get which field to increment
 
-#### incrementBy
+#### incrementBy {simple-incrementby}
 
 `number` default `1`
 
@@ -139,13 +139,13 @@ await doc.save();
 
 Note: `AutoIncrementIDSkipSymbol` can also be set inside hooks, but hooks might be called before others
 
-#### incrementBy
+#### incrementBy {id-incrementby}
 
 `number` default `1`
 
 This option is optional, default is to increment by `1`
 
-#### field
+#### field {id-field}
 
 `string`
 
