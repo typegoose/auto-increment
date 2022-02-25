@@ -6,10 +6,10 @@ on:
     branches:
       - '*'
       - '!gh-pages'
-    paths: # only run this deploy if an file in the following directories are changed
-      - 'src/**'
-      - 'test/**'
-      - '*.json' # run if an ".json" file in the *root* of the repository is changed
+    # paths: # only run this deploy if an file in the following directories are changed
+    #   - 'src/**'
+    #   - 'test/**'
+    #   - '*.json' # run if an ".json" file in the *root* of the repository is changed
 
 jobs:
   tests:
