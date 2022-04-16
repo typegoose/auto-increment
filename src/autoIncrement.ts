@@ -61,7 +61,12 @@ export function AutoIncrementSimple(
 }
 
 /** The Schema used for the trackers */
-const IDSchema = new mongoose.Schema<AutoIncrementIDTrackerSpecDoc>(
+const IDSchema = new mongoose.Schema<
+  AutoIncrementIDTrackerSpecDoc,
+  mongoose.Model<AutoIncrementIDTrackerSpecDoc>,
+  Record<string, unknown>,
+  Record<string, unknown>
+>(
   {
     field: String,
     // @ts-expect-error somehow "modelName" gets removed from the type
@@ -109,7 +114,11 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
       // needs to be done, otherwise "undefiend" error if the plugin is used in an sub-document
       const db: mongoose.Connection = this.db ?? (this as any).ownerDocument().db;
-      model = db.model<AutoIncrementIDTrackerSpecDoc>(opt.trackerModelName, IDSchema, opt.trackerCollection);
+      model = db.model<AutoIncrementIDTrackerSpecDoc, mongoose.Model<AutoIncrementIDTrackerSpecDoc>, Record<string, unknown>>(
+        opt.trackerModelName,
+        IDSchema,
+        opt.trackerCollection
+      );
       // test if the counter document already exists
       const counter = await model
         .findOne({
