@@ -1,5 +1,3 @@
-import type { mongoose } from '@typegoose/typegoose';
-
 export interface AutoIncrementOptionsSimple {
   /** Which Field to increment on save */
   field: string;
@@ -49,5 +47,3 @@ export interface AutoIncrementIDTrackerSpec {
   /** Current Tracker count */
   count: number;
 }
-
-export type AutoIncrementIDTrackerSpecDoc = mongoose.Document & AutoIncrementIDTrackerSpec;

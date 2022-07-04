@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
 import { logger } from './logSettings';
-import type { AutoIncrementIDOptions, AutoIncrementIDTrackerSpecDoc, AutoIncrementOptionsSimple } from './types';
+import type { AutoIncrementIDOptions, AutoIncrementIDTrackerSpec, AutoIncrementOptionsSimple } from './types';
 
 const DEFAULT_INCREMENT = 1;
 
@@ -61,18 +61,10 @@ export function AutoIncrementSimple(
 }
 
 /** The Schema used for the trackers */
-const IDSchema = new mongoose.Schema<
-  AutoIncrementIDTrackerSpecDoc,
-  mongoose.Model<AutoIncrementIDTrackerSpecDoc>,
-  Record<string, unknown>,
-  Record<string, unknown>
->(
+const IDSchema = new mongoose.Schema<AutoIncrementIDTrackerSpec>(
   {
-    // @ts-expect-error somehow mongoose types expect "StringConstructor" instead of "String"
     field: String,
-    // @ts-expect-error somehow "modelName" gets removed from the type
     modelName: String,
-    // @ts-expect-error somehow mongoose types expect "NumberConstructor" instead of "Number"
     count: Number,
   },
   { versionKey: false }
@@ -103,7 +95,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     throw new Error(`Field "${opt.field}" is not an SchemaNumber!`);
   }
 
-  let model: mongoose.Model<AutoIncrementIDTrackerSpecDoc>;
+  let model: mongoose.Model<AutoIncrementIDTrackerSpec>;
 
   logger.info('AutoIncrementID called with options %O', opt);
 
@@ -116,11 +108,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
       // needs to be done, otherwise "undefiend" error if the plugin is used in an sub-document
       const db: mongoose.Connection = this.db ?? (this as any).ownerDocument().db;
-      model = db.model<AutoIncrementIDTrackerSpecDoc, mongoose.Model<AutoIncrementIDTrackerSpecDoc>, Record<string, unknown>>(
-        opt.trackerModelName,
-        IDSchema,
-        opt.trackerCollection
-      );
+      model = db.model<AutoIncrementIDTrackerSpec>(opt.trackerModelName, IDSchema, opt.trackerCollection);
       // test if the counter document already exists
       const counter = await model
         .findOne({
