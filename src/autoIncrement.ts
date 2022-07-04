@@ -68,9 +68,11 @@ const IDSchema = new mongoose.Schema<
   Record<string, unknown>
 >(
   {
+    // @ts-expect-error somehow mongoose types expect "StringConstructor" instead of "String"
     field: String,
     // @ts-expect-error somehow "modelName" gets removed from the type
     modelName: String,
+    // @ts-expect-error somehow mongoose types expect "NumberConstructor" instead of "Number"
     count: Number,
   },
   { versionKey: false }
@@ -143,6 +145,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
+    // @ts-expect-error mongoose now restrics indexes to "string"
     if (typeof this[AutoIncrementIDSkipSymbol] === 'boolean' && AutoIncrementIDSkipSymbol) {
       logger.info('Symbol "AutoIncrementIDSkipSymbol" is set to "true", skipping');
 
