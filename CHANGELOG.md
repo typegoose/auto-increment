@@ -1,3 +1,10 @@
+### [1.4.1](https://github.com/typegoose/auto-increment/compare/v1.4.0...v1.4.1) (2022-07-04)
+
+
+### Style
+
+* update used model and document types ([ff62def](https://github.com/typegoose/auto-increment/commit/ff62def71530a3ae327c004262682c701f742db3))
+
 ## [1.4.0](https://github.com/typegoose/auto-increment/compare/v1.3.0...v1.4.0) (2022-07-04)
 
 
