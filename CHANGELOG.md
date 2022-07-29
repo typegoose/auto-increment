@@ -1,3 +1,17 @@
+## [1.5.0](https://github.com/typegoose/auto-increment/compare/v1.4.1...v1.5.0) (2022-07-29)
+
+
+### Dependencies
+
+* **@types/jest:** upgrade to 28.1.6 ([727a8ce](https://github.com/typegoose/auto-increment/commit/727a8cead15040c1b3664007aa56fdd600ebf7e2))
+* **@typescript-eslint/*:** upgrade to 5.31.0 ([2dded2f](https://github.com/typegoose/auto-increment/commit/2dded2f01e5fdda7eb1a83429f40eb97a1b427d4))
+* **eslint:** upgrade to 8.20.0 ([6c5feb4](https://github.com/typegoose/auto-increment/commit/6c5feb498c5d2ae66bf9082405ea4631caddb493))
+* **jest:** upgrade to 28.1.3 ([b322fd0](https://github.com/typegoose/auto-increment/commit/b322fd090548223f70a9ce2afc2a588364b08edc))
+* **lint-staged:** upgrade to 12.5.0 ([b4f7a34](https://github.com/typegoose/auto-increment/commit/b4f7a34f3678a6fc7f8c9473f44045abac7392b3))
+* **mongodb-memory-server:** upgrade to 8.8.0 ([db94190](https://github.com/typegoose/auto-increment/commit/db94190fbcef2eff39a5b2f9f1851855008cd4f9))
+* **mongoose:** upgrade to 6.5.0 ([104c029](https://github.com/typegoose/auto-increment/commit/104c0290c09a6164428f4637ae1b97e5ef4f3d63))
+* **ts-jest:** upgrade to 28.0.7 ([d3a01f3](https://github.com/typegoose/auto-increment/commit/d3a01f35b31f868ce0ee4a18d5a6007c85bf7c9f))
+
 ### [1.4.1](https://github.com/typegoose/auto-increment/compare/v1.4.0...v1.4.1) (2022-07-04)
 
 
