@@ -72,19 +72,19 @@ const doc = await SomeModel.create({ someIncrementedField: 10 }); // _id will be
 
 ## Motivation
 
-I started `@typegoose/auto-increment` because `mongoose-auto-increment` and `mongoose-auto-increment-reworked` are archived and didnt get any update for at least 2 years, and there were many issues about them in [typegoose](https://github.com/typegoose/typegoose) so i thought it will be easy to make an up-to-date automatic incrementing plugin
+I started `@typegoose/auto-increment` because `mongoose-auto-increment` and `mongoose-auto-increment-reworked` are archived and didnt get any update for at least 2 years, and there were many issues about them in [typegoose](https://github.com/typegoose/typegoose) so i thought it will be easy to make an up-to-date automatic incrementing plugin.
 
 ## Requirements
 
 - Node 12.22.0+
 - TypeScript 4.4+ (older versions could work, but are not tested)
-- mongoose 6.4+
+- mongoose 6.5+
 
 ## Install
 
 `npm i -s @typegoose/auto-increment`
 
-You also need to install `mongoose`, because this plugin is made for `mongoose`
+You also need to install `mongoose`, because this plugin is made for `mongoose`.
 
 ## Testing
 
@@ -103,32 +103,32 @@ To ask questions or just talk with us [join our Discord Server](https://discord.
 
 ### AutoIncrementSimple - Options
 
-The options can either be an object or an array of objects (single field / multiple fields)
+The options can either be an object or an array of objects (single field / multiple fields).
 
-Note: This function will only increment if the document is not new, this is to apply the default value
+Note: This function will only increment if the document is not new, this is to apply the default value.
 
 #### field
 
 `string`
 
-This option is always required to get which field to increment
+This option is always required to get which field to increment.
 
 #### incrementBy
 
 `number` default `1`
 
-This option is optional, default is to increment by `1`
+This option is optional, default is to increment by `1`.
 
 ### AutoIncrementID - Options
 
-The options can only be one single object
+The options can only be one single object.
 
-This plugin variant uses a model and a collection to store tracking(/counter) infomation to keep track of the ID in case the latest one gets deleted
+This plugin variant uses a model and a collection to store tracking(/counter) infomation to keep track of the ID in case the latest one gets deleted.
 
-Note: the model used to keep track of the counter, will use the connection that the assigned schema uses
-Note: when the model is completly new, the first document will be "1", [see here as on why](https://github.com/Automattic/mongoose/issues/3617)
+Note: the model used to keep track of the counter, will use the connection that the assigned schema uses.  
+Note: when the model is completly new, the first document will be "1", [see here as on why](https://github.com/Automattic/mongoose/issues/3617).
 
-if the hook should be skipped, use `AutoIncrementIDSkipSymbol`
+if the hook should be skipped, use `AutoIncrementIDSkipSymbol`:
 
 ```ts
 const doc = new Model();
@@ -137,41 +137,41 @@ doc[AutoIncrementIDSkipSymbol] = true;
 await doc.save();
 ```
 
-Note: `AutoIncrementIDSkipSymbol` can also be set inside hooks, but hooks might be called before others
+Note: `AutoIncrementIDSkipSymbol` can also be set inside hooks, but hooks might be called before others.
 
 #### incrementBy
 
 `number` default `1`
 
-This option is optional, default is to increment by `1`
+This option is optional, default is to increment by `1`.
 
 #### field
 
 `string`
 
-This option is optional, defaults to `_id`
+This option is optional, defaults to `_id`.
 
 #### trackerCollection
 
 `string`
 
-Set the Collection the tracker should use to store tracking infomation
+Set the Collection the tracker should use to store tracking infomation.
 
-This option is optional, defaults to `identitycounters`
+This option is optional, defaults to `identitycounters`.
 
 #### trackerModelName
 
 `string`
 
-Set the ModelName to use for the tracker model
+Set the ModelName to use for the tracker model.
 
-This option is optional, defaults to `identitycounter`
+This option is optional, defaults to `identitycounter`.
 
 #### startAt
 
 `number` default `0`
 
-Set the starting number of the counter
+Set the starting number of the counter.
 (the first document will be this number)
 
 ## Notes
