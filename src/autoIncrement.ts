@@ -140,7 +140,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
-    const leandoc: { count: number } = (await model
+    const leandoc = await model
       .findOneAndUpdate(
         {
           field: opt.field,
@@ -157,7 +157,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
         }
       )
       .lean()
-      .exec()) as any; // it seems like "FindAndModifyWriteOpResultObject" does not have a "count" property
+      .exec();
 
     if (isNullOrUndefined(leandoc)) {
       throw new Error(`"findOneAndUpdate" incrementing count failed for "${modelName}" on field "${opt.field}"`);
