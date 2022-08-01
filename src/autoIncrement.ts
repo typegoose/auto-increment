@@ -87,6 +87,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     trackerCollection: 'identitycounters',
     trackerModelName: 'identitycounter',
     startAt: 0,
+    overwriteModelName: '',
     ...options,
   };
 
@@ -102,7 +103,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
   schema.pre('save', async function AutoIncrementPreSaveID(): Promise<void> {
     logger.info('AutoIncrementID PreSave');
 
-    const modelName: string = (this.constructor as any).modelName;
+    const modelName: string = opt.overwriteModelName || (this.constructor as any).modelName;
 
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);

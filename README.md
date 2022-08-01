@@ -163,7 +163,7 @@ This option is optional, defaults to `identitycounters`.
 
 `string`
 
-Set the tracker-model's name (sets the model-name of the tracker model like `mongoose.model(NameHere, ...)`)
+Set the tracker-model's name (sets the model-name of the tracker model like `mongoose.model(NameHere, ...)`).
 
 This option is optional, defaults to `identitycounter`.
 
@@ -173,6 +173,13 @@ This option is optional, defaults to `identitycounter`.
 
 Set the starting number of the counter.
 (the first document will be this number)
+
+### overwriteModelName
+
+`string` default's to the documents's model-name
+
+Overwrite the used value for the `modelName` property on the tracker-document, this can be used when wanting to use the same tracker document across different models.  
+If the value is falsy, then it will default to the `modelName`.
 
 ## Notes
 

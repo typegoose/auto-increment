@@ -209,6 +209,84 @@ describe('Basic Suite', () => {
       const doc2 = await ParentModel.create({ nested: { someField: 'hello2' } });
       expect(doc2.nested._id).toBe(2);
     });
+
+    it('should make use of "overwriteModelName"', async () => {
+      const schema1 = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema1.plugin(AutoIncrementID, { overwriteModelName: 'TestOverwrite' });
+      const model1 = mongoose.model('AutoIncrementID-OMN1', schema1);
+
+      const schema2 = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema2.plugin(AutoIncrementID, { overwriteModelName: 'TestOverwrite' });
+      const model2 = mongoose.model('AutoIncrementID-OMN2', schema2);
+
+      // test schema1 initial 0
+      {
+        const doc = await model1.create({ somefield: 10 });
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
+
+        await doc.save();
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
+      }
+
+      // test schema1 add 1
+      {
+        const doc = await model1.create({ somefield: 20 });
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(1);
+
+        await doc.save();
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(1);
+      }
+
+      // test schema2 add 1 & use same tracker
+      {
+        const doc = await model2.create({ somefield: 30 });
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(2);
+
+        await doc.save();
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(2);
+      }
+
+      const trackerModel = mongoose.connection.models['identitycounter'];
+      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+
+      const foundTracker = await trackerModel.findOne({ modelName: 'TestOverwrite' }).orFail();
+      expect(foundTracker.count).toEqual(2);
+    });
+
+    it('should use modelName if "overwriteModelName" is falsy', async () => {
+      const schema = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema.plugin(AutoIncrementID, { overwriteModelName: '' });
+      const model = mongoose.model('AutoIncrementID-EOMN', schema);
+
+      const doc = await model.create({ somefield: 10 });
+      expect(doc.somefield).toBe(10);
+      expect(doc._id).toBe(0);
+
+      await doc.save();
+      expect(doc.somefield).toBe(10);
+      expect(doc._id).toBe(0);
+
+      const trackerModel = mongoose.connection.models['identitycounter'];
+      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+
+      const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-EOMN' }).orFail();
+      expect(foundTracker.count).toEqual(0);
+    });
   });
 });
 

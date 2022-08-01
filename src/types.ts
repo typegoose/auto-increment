@@ -37,6 +37,12 @@ export interface AutoIncrementIDOptions {
    * @default 0
    */
   startAt?: number;
+  /**
+   * Overwrite what to use for the `modelName` property in the tracker document
+   * This can be overwritten when wanting to use a single tracker for multiple models
+   * Defaults to `document.constructor.modelName`
+   */
+  overwriteModelName?: string;
 }
 
 export interface AutoIncrementIDTrackerSpec {
