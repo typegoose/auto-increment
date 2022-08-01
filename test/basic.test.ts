@@ -11,7 +11,7 @@ describe('Basic Suite', () => {
       schema.plugin(AutoIncrementSimple, [{ field: 'somefield' }]);
       const model = mongoose.model('AutoIncrementSimple-SomeModel', schema);
 
-      const doc: mongoose.Document & { somefield: number } = (await model.create({ somefield: 10 })) as any;
+      const doc = await model.create({ somefield: 10 });
       expect(doc.somefield).toBe(10);
 
       await doc.save();
@@ -45,7 +45,7 @@ describe('Basic Suite', () => {
       schema.plugin(AutoIncrementID, {});
       const model = mongoose.model('AutoIncrementID-SomeModel', schema);
 
-      const doc: mongoose.Document & { somefield: number } = (await model.create({ somefield: 10 })) as any;
+      const doc = await model.create({ somefield: 10 });
       expect(doc.somefield).toBe(10);
       expect(doc._id).toBe(0);
 
@@ -88,7 +88,7 @@ describe('Basic Suite', () => {
       schema.plugin(AutoIncrementID, { startAt: 2 });
       const model = mongoose.model('AutoIncrementID-SomeModelStartAt', schema);
 
-      const doc: mongoose.Document & { somefield: number } = (await model.create({ somefield: 10 })) as any;
+      const doc = await model.create({ somefield: 10 });
       expect(doc.somefield).toBe(10);
       expect(doc._id).toBe(2);
 
