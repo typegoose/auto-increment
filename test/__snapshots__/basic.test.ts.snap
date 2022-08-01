@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Errors should Error if the schema path does not exist 1`] = `"Field \\"SomeNonExistingField\\" does not exists on the Schema!"`;
+
+exports[`Errors should Error if the schema path is not an number 1`] = `"Field \\"nonNumberField\\" is not an SchemaNumber!"`;

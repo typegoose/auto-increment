@@ -157,13 +157,13 @@ describe('Basic Suite', () => {
 describe('Errors', () => {
   it('should Error if the schema path does not exist', () => {
     const schema = new mongoose.Schema({});
-    expect(() => schema.plugin(AutoIncrementSimple, { field: 'SomeNonExistingField' })).toThrow(Error);
+    expect(() => schema.plugin(AutoIncrementSimple, { field: 'SomeNonExistingField' })).toThrowErrorMatchingSnapshot();
   });
 
   it('should Error if the schema path is not an number', () => {
     const schema = new mongoose.Schema({
       nonNumberField: String,
     });
-    expect(() => schema.plugin(AutoIncrementSimple, { field: 'nonNumberField' })).toThrow(Error);
+    expect(() => schema.plugin(AutoIncrementSimple, { field: 'nonNumberField' })).toThrowErrorMatchingSnapshot();
   });
 });
