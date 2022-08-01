@@ -1,3 +1,15 @@
+## [1.6.0](https://github.com/typegoose/auto-increment/compare/v1.5.0...v1.6.0) (2022-08-01)
+
+
+### Features
+
+* **autoIncrement::AutoIncrementID:** add option to overwrite "modelName" property in tracker-doc ([bb22a5f](https://github.com/typegoose/auto-increment/commit/bb22a5fda171e36bf8d75defe751a72b4bc17caa))
+
+
+### Style
+
+* **autoIncrement::AutoIncrementID:** remove workaround type ([8b87dd2](https://github.com/typegoose/auto-increment/commit/8b87dd29e86f0b4ef7fd8d3554803ae64cb5a0fc))
+
 ## [1.5.0](https://github.com/typegoose/auto-increment/compare/v1.4.1...v1.5.0) (2022-07-29)
 
 
