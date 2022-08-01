@@ -45,15 +45,44 @@ describe('Basic Suite', () => {
       schema.plugin(AutoIncrementID, {});
       const model = mongoose.model('AutoIncrementID-SomeModel', schema);
 
-      const doc = await model.create({ somefield: 10 });
-      expect(doc.somefield).toBe(10);
-      expect(doc._id).toBe(0);
+      // test initial 0
+      {
+        const doc = await model.create({ somefield: 10 });
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
 
-      await doc.save();
-      expect(doc.somefield).toBe(10);
-      expect(doc._id).toBe(0);
+        await doc.save();
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
+      }
 
-      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
+      // test add 1
+      {
+        const doc = await model.create({ somefield: 20 });
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(1);
+
+        await doc.save();
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(1);
+      }
+
+      // test add another 1
+      {
+        const doc = await model.create({ somefield: 30 });
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(2);
+
+        await doc.save();
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(2);
+      }
+
+      const trackerModel = mongoose.connection.models['identitycounter'];
+      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+
+      const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeModel' }).orFail();
+      expect(foundTracker.count).toEqual(2);
     });
 
     it('Basic Function Typegoose', async () => {
@@ -69,15 +98,44 @@ describe('Basic Suite', () => {
 
       const SomeModel = getModelForClass(SomeClass);
 
-      const doc = await SomeModel.create({ someIncrementedField: 10 });
-      expect(doc.someIncrementedField).toBe(10);
-      expect(doc._id).toBe(0);
+      // test initial 0
+      {
+        const doc = await SomeModel.create({ someIncrementedField: 10 });
+        expect(doc.someIncrementedField).toBe(10);
+        expect(doc._id).toBe(0);
 
-      await doc.save();
-      expect(doc.someIncrementedField).toBe(10);
-      expect(doc._id).toBe(0);
+        await doc.save();
+        expect(doc.someIncrementedField).toBe(10);
+        expect(doc._id).toBe(0);
+      }
 
-      expect(mongoose.connection.model('identitycounter')).not.toBeUndefined();
+      // test add 1
+      {
+        const doc = await SomeModel.create({ someIncrementedField: 20 });
+        expect(doc.someIncrementedField).toBe(20);
+        expect(doc._id).toBe(1);
+
+        await doc.save();
+        expect(doc.someIncrementedField).toBe(20);
+        expect(doc._id).toBe(1);
+      }
+
+      // test add another 1
+      {
+        const doc = await SomeModel.create({ someIncrementedField: 30 });
+        expect(doc.someIncrementedField).toBe(30);
+        expect(doc._id).toBe(2);
+
+        await doc.save();
+        expect(doc.someIncrementedField).toBe(30);
+        expect(doc._id).toBe(2);
+      }
+
+      const trackerModel = mongoose.connection.models['identitycounter'];
+      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+
+      const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeClass' }).orFail();
+      expect(foundTracker.count).toEqual(2);
     });
 
     it('Basic Function Mongoose With startAt', async () => {
