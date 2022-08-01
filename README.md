@@ -155,7 +155,7 @@ This option is optional, defaults to `_id`.
 
 `string`
 
-Set the Collection the tracker should use to store tracking infomation.
+Set the Collection the tracker-model should use to store tracking infomation (/ to store the tracking documents).
 
 This option is optional, defaults to `identitycounters`.
 
@@ -163,7 +163,7 @@ This option is optional, defaults to `identitycounters`.
 
 `string`
 
-Set the ModelName to use for the tracker model.
+Set the tracker-model's name (sets the model-name of the tracker model like `mongoose.model(NameHere, ...)`)
 
 This option is optional, defaults to `identitycounter`.
 
