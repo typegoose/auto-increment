@@ -23,6 +23,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Load MongoDB binary cache
+        id: cache-mongodb-binaries
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: ${{ matrix.node-version }}
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Run Audit
@@ -48,6 +54,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
+      - name: Load MongoDB binary cache
+        id: cache-mongodb-binaries
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: publish
       - name: Install node_modules
         run: yarn install
       - name: Build
