@@ -1,4 +1,5 @@
 import { getModelForClass, modelOptions, plugin, prop } from '@typegoose/typegoose';
+import { assertion } from '@typegoose/typegoose/lib/internal/utils';
 import * as mongoose from 'mongoose';
 import { AutoIncrementID, AutoIncrementSimple } from '../src/autoIncrement';
 
@@ -286,6 +287,104 @@ describe('Basic Suite', () => {
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-EOMN' }).orFail();
       expect(foundTracker.count).toEqual(0);
+    });
+
+    it('should support "overwriteModelName" being a function', async () => {
+      let fcalled = 0;
+
+      const schema = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema.plugin(AutoIncrementID, {
+        overwriteModelName: (modelName, model) => {
+          fcalled += 1;
+          expect(modelName).toStrictEqual('AutoIncrementID-OMNF');
+          expect(Object.getPrototypeOf(model)).toStrictEqual(mongoose.Model);
+
+          return 'AutoIncrementID-OMNF-test';
+        },
+      });
+      const model = mongoose.model('AutoIncrementID-OMNF', schema);
+
+      expect(fcalled).toStrictEqual(0);
+      const doc = await model.create({ somefield: 10 });
+      expect(fcalled).toStrictEqual(1);
+      expect(doc.somefield).toBe(10);
+      expect(doc._id).toBe(0);
+
+      expect(fcalled).toStrictEqual(1);
+      await doc.save();
+      expect(fcalled).toStrictEqual(2);
+      expect(doc.somefield).toBe(10);
+      expect(doc._id).toBe(0);
+
+      const trackerModel = mongoose.connection.models['identitycounter'];
+      expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
+
+      const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-OMNF-test' }).orFail();
+      expect(foundTracker.count).toEqual(0);
+    });
+
+    it('should throw a error if "overwriteModelName" is a function but returns a empty string', async () => {
+      let fcalled = 0;
+
+      const schema = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema.plugin(AutoIncrementID, {
+        overwriteModelName: (modelName, model) => {
+          fcalled += 1;
+          expect(modelName).toStrictEqual('AutoIncrementID-OMNFEE');
+          expect(Object.getPrototypeOf(model)).toStrictEqual(mongoose.Model);
+
+          return '';
+        },
+      });
+      const model = mongoose.model('AutoIncrementID-OMNFEE', schema);
+
+      expect(fcalled).toStrictEqual(0);
+      try {
+        await model.create({ somefield: 10 });
+        fail('Expected .create to fail');
+      } catch (err) {
+        expect(fcalled).toStrictEqual(1);
+        expect(err).toBeInstanceOf(Error);
+        assertion(err instanceof Error); // jest types do not do this for typescript
+        expect(err.message).toMatchSnapshot();
+      }
+    });
+
+    it('should throw a error if "overwriteModelName" is a function but returns not a string', async () => {
+      let fcalled = 0;
+
+      const schema = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema.plugin(AutoIncrementID, {
+        // @ts-expect-error ReturnType should be string
+        overwriteModelName: (modelName, model) => {
+          fcalled += 1;
+          expect(modelName).toStrictEqual('AutoIncrementID-OMNFENS');
+          expect(Object.getPrototypeOf(model)).toStrictEqual(mongoose.Model);
+
+          return 0;
+        },
+      });
+      const model = mongoose.model('AutoIncrementID-OMNFENS', schema);
+
+      expect(fcalled).toStrictEqual(0);
+      try {
+        await model.create({ somefield: 10 });
+        fail('Expected .create to fail');
+      } catch (err) {
+        expect(fcalled).toStrictEqual(1);
+        expect(err).toBeInstanceOf(Error);
+        assertion(err instanceof Error); // jest types do not do this for typescript
+        expect(err.message).toMatchSnapshot();
+      }
     });
   });
 });

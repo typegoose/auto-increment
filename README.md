@@ -176,10 +176,12 @@ Set the starting number of the counter.
 
 ### overwriteModelName
 
-`string` default's to the documents's model-name
+`string` default's to the documents's model-name  
+`(modelName: string, model: Model) => string`
 
 Overwrite the used value for the `modelName` property on the tracker-document, this can be used when wanting to use the same tracker document across different models.  
-If the value is falsy, then it will default to the `modelName`.
+If the value is falsy, then it will default to the `modelName`.  
+Can also be used as a function to generate a name to use based on `modelName` or the `model` itself, needs to return a non-empty string, when wanting to default back to default behavior just return the parameter `modelName`.
 
 ## Notes
 

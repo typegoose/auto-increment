@@ -1,5 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Basic Suite AutoIncrementID should throw a error if "overwriteModelName" is a function but returns a empty string 1`] = `"\\"overwriteModelname\\" is a function, but did return a falsy type or is not a string!"`;
+
+exports[`Basic Suite AutoIncrementID should throw a error if "overwriteModelName" is a function but returns not a string 1`] = `"\\"overwriteModelname\\" is a function, but did return a falsy type or is not a string!"`;
+
 exports[`Errors should Error if the schema path does not exist 1`] = `"Field \\"SomeNonExistingField\\" does not exists on the Schema!"`;
 
 exports[`Errors should Error if the schema path is not an number 1`] = `"Field \\"nonNumberField\\" is not an SchemaNumber!"`;

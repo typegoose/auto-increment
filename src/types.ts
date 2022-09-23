@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+
 export interface AutoIncrementOptionsSimple {
   /** Which Field to increment on save */
   field: string;
@@ -42,8 +44,13 @@ export interface AutoIncrementIDOptions {
    * This can be overwritten when wanting to use a single tracker for multiple models
    * Defaults to `document.constructor.modelName`
    */
-  overwriteModelName?: string;
+  overwriteModelName?: string | OverwriteModelNameFunction;
 }
+
+/**
+ * A function to generate the name used for the auto-increment "modelName" field
+ */
+export type OverwriteModelNameFunction = (modelName: string, model: mongoose.Model<any>) => string;
 
 export interface AutoIncrementIDTrackerSpec {
   /** The ModelName from the current model */

@@ -103,7 +103,18 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
   schema.pre('save', async function AutoIncrementPreSaveID(): Promise<void> {
     logger.info('AutoIncrementID PreSave');
 
-    const modelName: string = opt.overwriteModelName || (this.constructor as any).modelName;
+    const originalModelName: string = (this.constructor as any).modelName;
+    let modelName: string;
+
+    if (typeof opt.overwriteModelName === 'function') {
+      modelName = opt.overwriteModelName(originalModelName, this.constructor as any);
+
+      if (!modelName || typeof modelName !== 'string') {
+        throw new Error('"overwriteModelname" is a function, but did return a falsy type or is not a string!');
+      }
+    } else {
+      modelName = opt.overwriteModelName || originalModelName;
+    }
 
     if (!model) {
       logger.info('Creating idtracker model named "%s"', opt.trackerModelName);
