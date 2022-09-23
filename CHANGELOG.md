@@ -1,3 +1,10 @@
+## [1.8.0](https://github.com/typegoose/auto-increment/compare/v1.7.0...v1.8.0) (2022-09-23)
+
+
+### Features
+
+* **autoIncrement::AutoIncrementID:** support "overwriteModelName" to be a function ([46bcc45](https://github.com/typegoose/auto-increment/commit/46bcc450e36b5cdb5a2b009b96f9de3d0dd347e5)), closes [#16](https://github.com/typegoose/auto-increment/issues/16)
+
 ## [1.7.0](https://github.com/typegoose/auto-increment/compare/v1.6.0...v1.7.0) (2022-09-13)
 
 
