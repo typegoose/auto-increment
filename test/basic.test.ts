@@ -80,7 +80,7 @@ describe('Basic Suite', () => {
       }
 
       const trackerModel = mongoose.connection.models['identitycounter'];
-      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+      expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeModel' }).orFail();
       expect(foundTracker.count).toEqual(2);
@@ -133,7 +133,7 @@ describe('Basic Suite', () => {
       }
 
       const trackerModel = mongoose.connection.models['identitycounter'];
-      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+      expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeClass' }).orFail();
       expect(foundTracker.count).toEqual(2);
@@ -260,7 +260,7 @@ describe('Basic Suite', () => {
       }
 
       const trackerModel = mongoose.connection.models['identitycounter'];
-      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+      expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'TestOverwrite' }).orFail();
       expect(foundTracker.count).toEqual(2);
@@ -283,7 +283,7 @@ describe('Basic Suite', () => {
       expect(doc._id).toBe(0);
 
       const trackerModel = mongoose.connection.models['identitycounter'];
-      // expect(trackerModel).toBeInstanceOf(mongoose.connection.Model); // disabled, see https://github.com/Automattic/mongoose/discussions/12179
+      expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-EOMN' }).orFail();
       expect(foundTracker.count).toEqual(0);
