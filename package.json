@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "loglevel": "^1.8.1",
-    "tslib": "^2.4.0"
+    "tslib": "^2.4.1"
   },
   "publishConfig": {
     "access": "public"
