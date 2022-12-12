@@ -1,3 +1,33 @@
+## [2.0.0](https://github.com/typegoose/auto-increment/compare/v1.9.0...v2.0.0) (2022-12-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **tsconfig:** The tsconfig target is now "es2020" is makes it incompatible with anything before Nodejs 14
+* The minimal NodeJS version is now 14.17
+
+### Dependencies
+
+* **@semantic-release/changelog:** upgrade to 6.0.2 ([aedf689](https://github.com/typegoose/auto-increment/commit/aedf6890e1f30e3f53b27a9a9224dbcc24dc4d94))
+* **@semantic-release/commit-analyzer:** upgrade to 9.0.2 ([4e26d18](https://github.com/typegoose/auto-increment/commit/4e26d181b4f86a2590a48431974386bf51ccb904))
+* **@semantic-release/github:** upgrade to 8.0.7 ([9b895e4](https://github.com/typegoose/auto-increment/commit/9b895e45927cf7124ea1fcdc826d5295b988f392))
+* **@semantic-release/git:** upgrade to 10.0.1 ([0a0edd1](https://github.com/typegoose/auto-increment/commit/0a0edd1dd6bc000bfa010e00e91593dc26105263))
+* **@semantic-release/npm:** upgrade to 9.0.1 ([72d5f3c](https://github.com/typegoose/auto-increment/commit/72d5f3cc429b6444f597367b0d35b392d8e02b39))
+* **@semantic-release:** upgrade to 10.0.3 ([610ab1e](https://github.com/typegoose/auto-increment/commit/610ab1ebda98a257bc5fc342e2462f7df577342a))
+* **@types/node:** upgrade to 14.14 ([e0502c4](https://github.com/typegoose/auto-increment/commit/e0502c40dfb1b70104bfb4f0e4c234def4ae5afa))
+* **commitlint:** upgrade to 17.3.0 ([bd9df81](https://github.com/typegoose/auto-increment/commit/bd9df81ef3143da21dc815770b7de57a0358cc44))
+* **husky:** upgrade to 8.0.2 ([4f9865f](https://github.com/typegoose/auto-increment/commit/4f9865f7a519de932b59e95eb3243d24d230655d))
+* **jest:** upgrade to 29.3.1 ([d1695b4](https://github.com/typegoose/auto-increment/commit/d1695b429d282388c344ee65e2d68291ffe70ecb))
+* **lint-staged:** upgrade to 13.1.0 ([c2503dc](https://github.com/typegoose/auto-increment/commit/c2503dc027c44b2629a2864a92c5f4335b6fb213))
+* **mongodb-memory-server:** upgrade to 8.10.2 ([0a82d35](https://github.com/typegoose/auto-increment/commit/0a82d353e4da865979d56a34b74184a1323a3e30))
+* **mongoose:** upgrade to 6.8.0 ([3278054](https://github.com/typegoose/auto-increment/commit/327805460bc5cafda89e489fc2c5f477ca6fa8de)), closes [#17](https://github.com/typegoose/auto-increment/issues/17)
+* **semantic-release:** upgrade to 19.0.5 ([b746215](https://github.com/typegoose/auto-increment/commit/b7462154feb872cbcd0a724fd5aa52dca6c2854e))
+* **typescript:** upgrade to 4.9.4 ([db6a5d0](https://github.com/typegoose/auto-increment/commit/db6a5d0a48f2cc64da4236ec98c3d5cf4271034a))
+
+
+* **tsconfig:** update target to "es2020" ([6686655](https://github.com/typegoose/auto-increment/commit/6686655cc1be9c68a8edf6320970ab69a024ae5f))
+* upgrade to nodejs 14 ([2cc59aa](https://github.com/typegoose/auto-increment/commit/2cc59aa7536e93a4f830a80929eb868f54a9d1b1))
+
 ## [1.9.0](https://github.com/typegoose/auto-increment/compare/v1.8.0...v1.9.0) (2022-12-09)
 
 
