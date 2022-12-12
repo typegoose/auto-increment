@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x, 18.x, 19.x]
+        node-version: [14.x, 16.x, 18.x, 19.x]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
@@ -42,7 +42,7 @@ jobs:
         env:
           CI: true
       - name: Send codecov.io stats
-        if: matrix.node-version == '14.x'
+        if: matrix.node-version == '18.x'
         uses: codecov/codecov-action@v2
   publish:
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
@@ -50,10 +50,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js 12
+      - name: Use Node.js 18
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 18.x
       - name: Load MongoDB binary cache
         id: cache-mongodb-binaries
         uses: actions/cache@v3
