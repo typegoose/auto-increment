@@ -43,7 +43,7 @@
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@typegoose/typegoose": "~9.13.2",
     "@types/jest": "^29.2.4",
-    "@types/node": "~12.12.6",
+    "@types/node": "~14.14.31",
     "@typescript-eslint/eslint-plugin": "^5.46.0",
     "@typescript-eslint/parser": "^5.46.0",
     "commitlint": "^17.3.0",
