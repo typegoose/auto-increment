@@ -1,19 +1,16 @@
 {
   "preset": "ts-jest",
   "testEnvironment": "node",
-  "globals": {
-    "ts-jest": {
+  "transform": {
+    "\\.ts$": ["ts-jest", {
       "tsconfig": "<rootDir>/tsconfig.json",
       "diagnostics": true
-    }
+    }]
   },
   "moduleFileExtensions": [
     "ts",
     "js"
   ],
-  "transform": {
-    "^.+\\.(t|j)s$": "ts-jest"
-  },
   "testPathIgnorePatterns": [
     "/node_modules/",
     "/lib/"
