@@ -1,3 +1,22 @@
+## [2.1.0](https://github.com/typegoose/auto-increment/compare/v2.0.0...v2.1.0) (2023-01-29)
+
+
+### Dependencies
+
+* **@semantic-release/npm:** upgrade to 9.0.2 ([d4f1436](https://github.com/typegoose/auto-increment/commit/d4f1436c978dd84258b874191a052f6005c8d13e))
+* **@types/jest:** upgrade to 29.4.0 ([5421248](https://github.com/typegoose/auto-increment/commit/542124824c13a688ec02c42475117dba9258e802))
+* **@typescript-eslint/*:** upgrade to 5.49.0 ([aaa2534](https://github.com/typegoose/auto-increment/commit/aaa2534cab12644bbd5579147fe88e7bc697cee5))
+* **commitlint:** upgrade to 17.4.2 ([51a84b2](https://github.com/typegoose/auto-increment/commit/51a84b2d0f51f58fcef1fda31898b9273216143b))
+* **eslint-config-prettier:** upgrade to 8.6.0 ([336b047](https://github.com/typegoose/auto-increment/commit/336b047d7e83bf495ea7becad517a16716247347))
+* **eslint:** upgrade to 8.33.0 ([fbbc7f3](https://github.com/typegoose/auto-increment/commit/fbbc7f38f668bca4d1b28644daf7f2b2eba27e4d))
+* **husky:** upgrade to 8.0.3 ([8bb13f5](https://github.com/typegoose/auto-increment/commit/8bb13f55426a112d9f7c296008d24fd8dac572aa))
+* **jest:** upgrade to 29.4.1 ([f595dc3](https://github.com/typegoose/auto-increment/commit/f595dc33f43b7e12c4eb25fd1d53bbb30b84f31b))
+* **mongodb-memory-server:** upgrade to 8.11.4 ([0b143c1](https://github.com/typegoose/auto-increment/commit/0b143c1f2e077e57fd51515ac607c0ea7325053e))
+* **mongoose:** upgrade to 6.9.0 ([8b1a5b0](https://github.com/typegoose/auto-increment/commit/8b1a5b01aae1381a7cd66db1bd34885bd6a70e1d))
+* **prettier:** upgrade to 2.8.3 ([80f8192](https://github.com/typegoose/auto-increment/commit/80f81922f308f6c42d67137b5460e65ba32442c4))
+* **ts-jest:** upgrade to 29.0.5 ([73d3fe3](https://github.com/typegoose/auto-increment/commit/73d3fe3aba7d4f97fc23e4be717807bbf71b79d0))
+* **tslib:** upgrade to 2.5.0 ([4a05a05](https://github.com/typegoose/auto-increment/commit/4a05a05bb9fc126df10edc17e9b8300b428e47da))
+
 ## [2.0.0](https://github.com/typegoose/auto-increment/compare/v1.9.0...v2.0.0) (2022-12-12)
 
 
