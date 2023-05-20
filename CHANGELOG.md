@@ -1,3 +1,20 @@
+## [3.2.0](https://github.com/typegoose/auto-increment/compare/v3.1.0...v3.2.0) (2023-05-20)
+
+
+### Reverts
+
+* Revert "dependencies(@types/node): upgrade to 16.11.7" ([787473c](https://github.com/typegoose/auto-increment/commit/787473cd72ce9ec8b2b6ecb8495e20719b9abd56))
+
+
+### Dependencies
+
+* **@types/node:** upgrade to 14.18.45 ([20fab73](https://github.com/typegoose/auto-increment/commit/20fab734578006539eecc1a2798a2985d09ee4a1))
+* **@typescript-eslint/*:** upgrade to 5.59.6 ([6aec316](https://github.com/typegoose/auto-increment/commit/6aec3164224f9cae939704affa67bbc76f436617))
+* **commitlint:** upgrade to 17.6.3 ([9644e1f](https://github.com/typegoose/auto-increment/commit/9644e1ff8b0ad3393812595aa2b75715724bad3a))
+* **eslint:** upgrade to 8.41.0 ([3d72bcd](https://github.com/typegoose/auto-increment/commit/3d72bcd879fe59c9fd3d59bf1a7c766694ab7739))
+* **mongoose:** upgrade to 7.2.0 ([427c19b](https://github.com/typegoose/auto-increment/commit/427c19b9f5d6da09c2653c5abc5e2d680b298cdf))
+* **tslib:** upgrade to 2.5.2 ([73fdc28](https://github.com/typegoose/auto-increment/commit/73fdc28a3ae13026b0438397a76c03ddd20dd00b))
+
 ## [3.1.0](https://github.com/typegoose/auto-increment/compare/v3.0.0...v3.1.0) (2023-04-29)
 
 Note: when updating to this version, `@types/node@16` is required (instead of the previous `@14`)
