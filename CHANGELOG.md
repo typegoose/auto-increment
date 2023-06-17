@@ -1,3 +1,17 @@
+## [3.3.0](https://github.com/typegoose/auto-increment/compare/v3.2.0...v3.3.0) (2023-06-17)
+
+
+### Dependencies
+
+* **@types/jest:** upgrade to 29.5.2 ([1f3f691](https://github.com/typegoose/auto-increment/commit/1f3f6917fe87ad8a5055036c6040fbc5b8b4c01e))
+* **@typescript-eslint/*:** upgrade to 5.59.11 ([0a90d13](https://github.com/typegoose/auto-increment/commit/0a90d1359b4fee3210a64bb991da1ba693671cbd))
+* **commitlint:** upgrade to 17.6.5 ([c27d5b6](https://github.com/typegoose/auto-increment/commit/c27d5b68a8f05df8adf7ca441f4a825e2c0027e2))
+* **eslint:** upgrade to 8.43.0 ([8456a52](https://github.com/typegoose/auto-increment/commit/8456a52d9ec771a8161658b5c5f8f6590bf491d5))
+* **mongodb-memory-server:** upgrade to 8.13.0 ([cddb3a0](https://github.com/typegoose/auto-increment/commit/cddb3a0612ca1d9f6852aa9ae57e94034f65aece))
+* **mongoose:** upgrade to 7.3.0 ([6f17401](https://github.com/typegoose/auto-increment/commit/6f17401dc48ac3a48089e62a811995742cbaf458))
+* **rimraf:** upgrade to 5.0.1 ([16cfd43](https://github.com/typegoose/auto-increment/commit/16cfd4332df1d085c39e4780bb02650d2630bfd4))
+* **tslib:** upgrade to 2.5.3 ([d91355f](https://github.com/typegoose/auto-increment/commit/d91355fdd56c10424f481f046b05b1c20f8e6906))
+
 ## [3.2.0](https://github.com/typegoose/auto-increment/compare/v3.1.0...v3.2.0) (2023-05-20)
 
 
