@@ -39,8 +39,8 @@ export function AutoIncrementSimple(
       throw new Error(`Field "${field.field}" does not exists on the Schema!`);
     }
     // check if the field is an number
-    if (!(schemaField instanceof mongoose.Schema.Types.Number)) {
-      throw new Error(`Field "${field.field}" is not an SchemaNumber!`);
+    if (!(schemaField instanceof mongoose.Schema.Types.Number || schemaField instanceof mongoose.Schema.Types.BigInt)) {
+      throw new Error(`Field "${field.field}" is not a Number or BigInt!`);
     }
 
     if (isNullOrUndefined(field.incrementBy)) {
@@ -92,8 +92,9 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
   };
 
   // check if the field is an number
-  if (!(schema.path(opt.field) instanceof mongoose.Schema.Types.Number)) {
-    throw new Error(`Field "${opt.field}" is not an SchemaNumber!`);
+  const schemaField = schema.path(opt.field);
+  if (!(schemaField instanceof mongoose.Schema.Types.Number || schemaField instanceof mongoose.Schema.Types.BigInt)) {
+    throw new Error(`Field "${opt.field}" is not a Number or BigInt!`);
   }
 
   let model: mongoose.Model<AutoIncrementIDTrackerSpec>;
