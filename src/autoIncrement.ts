@@ -45,7 +45,12 @@ export function AutoIncrementSimple(
 
     if (isNullOrUndefined(field.incrementBy)) {
       logger.info('Field "%s" does not have an incrementBy defined, defaulting to %d', field.field, DEFAULT_INCREMENT);
-      field.incrementBy = DEFAULT_INCREMENT;
+
+      if (schemaField.instance === 'BigInt') {
+        field.incrementBy = BigInt(DEFAULT_INCREMENT);
+      } else {
+        field.incrementBy = DEFAULT_INCREMENT;
+      }
     }
   }
   // to have an name to the function if debugging
@@ -65,7 +70,7 @@ const IDSchema = new mongoose.Schema<AutoIncrementIDTrackerSpec>(
   {
     field: String,
     modelName: String,
-    count: Number,
+    count: BigInt,
   },
   { versionKey: false }
 );
@@ -96,6 +101,12 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
 
   if (schemaField.instance !== 'Number' && schemaField.instance !== 'BigInt') {
     throw new Error(`Field "${opt.field}" is not a Number or BigInt!`);
+  }
+
+  // update types if field is BigInt
+  if (schemaField.instance === 'BigInt') {
+    opt.incrementBy = BigInt(opt.incrementBy);
+    opt.startAt = BigInt(opt.startAt);
   }
 
   let model: mongoose.Model<AutoIncrementIDTrackerSpec>;
@@ -133,10 +144,22 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
         .exec();
 
       if (!counter) {
+        let newCount: bigint = 0n;
+
+        // need to explicitly type check since subtraction is not supported on union number types
+        if (typeof opt.startAt === 'bigint' && typeof opt.incrementBy === 'bigint') {
+          newCount = opt.startAt - opt.incrementBy;
+        } else if (typeof opt.startAt === 'number' && typeof opt.incrementBy === 'number') {
+          newCount = BigInt(opt.startAt - opt.incrementBy);
+        } else {
+          // this should never happen, but checking anyway
+          throw new Error(`Field "${opt.field}" has mismatched "startAt" and "incrementBy" types!`);
+        }
+
         await model.create({
           modelName: modelName,
           field: opt.field,
-          count: opt.startAt - opt.incrementBy,
+          count: newCount,
         });
       }
     }
