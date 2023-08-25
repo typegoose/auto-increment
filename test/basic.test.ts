@@ -5,12 +5,12 @@ import { AutoIncrementID, AutoIncrementSimple } from '../src/autoIncrement';
 
 describe('Basic Suite', () => {
   describe('AutoIncrementSimple', () => {
-    it('Basic Function Mongoose', async () => {
+    it('Basic Function Mongoose (Number)', async () => {
       const schema = new mongoose.Schema({
         somefield: Number,
       });
       schema.plugin(AutoIncrementSimple, [{ field: 'somefield' }]);
-      const model = mongoose.model('AutoIncrementSimple-SomeModel', schema);
+      const model = mongoose.model('AutoIncrementSimple-SomeModel-Number', schema);
 
       const doc = await model.create({ somefield: 10 });
       expect(doc.somefield).toBe(10);
@@ -19,9 +19,9 @@ describe('Basic Suite', () => {
       expect(doc.somefield).toBe(11);
     });
 
-    it('Basic Function Typegoose', async () => {
+    it('Basic Function Typegoose (Number)', async () => {
       @plugin(AutoIncrementSimple, [{ field: 'someIncrementedField' }])
-      @modelOptions({ options: { customName: 'AutoIncrementSimple-SomeClass' } })
+      @modelOptions({ options: { customName: 'AutoIncrementSimple-SomeClass-Number' } })
       class SomeClass {
         @prop({ required: true })
         public someIncrementedField: number;
@@ -34,6 +34,37 @@ describe('Basic Suite', () => {
 
       await doc.save();
       expect(doc.someIncrementedField).toBe(11);
+    });
+
+    it('Basic Function Mongoose (BigInt)', async () => {
+      const schema = new mongoose.Schema({
+        somefield: BigInt,
+      });
+      schema.plugin(AutoIncrementSimple, [{ field: 'somefield' }]);
+      const model = mongoose.model('AutoIncrementSimple-SomeModel-BigInt', schema);
+
+      const doc = await model.create({ somefield: 10n });
+      expect(doc.somefield).toBe(10n);
+
+      await doc.save();
+      expect(doc.somefield).toBe(11n);
+    });
+
+    it('Basic Function Typegoose (BigInt)', async () => {
+      @plugin(AutoIncrementSimple, [{ field: 'someIncrementedField' }])
+      @modelOptions({ options: { customName: 'AutoIncrementSimple-SomeClass-BigInt' } })
+      class SomeClass {
+        @prop({ required: true })
+        public someIncrementedField: bigint;
+      }
+
+      const SomeModel = getModelForClass(SomeClass);
+
+      const doc = await SomeModel.create({ someIncrementedField: 10n });
+      expect(doc.someIncrementedField).toBe(10n);
+
+      await doc.save();
+      expect(doc.someIncrementedField).toBe(11n);
     });
   });
 
@@ -83,7 +114,7 @@ describe('Basic Suite', () => {
       expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeModel-Number' }).orFail();
-      expect(foundTracker.count).toEqual(2);
+      expect(foundTracker.count).toEqual(2n);
     });
 
     it('Basic Function Typegoose (Number)', async () => {
@@ -136,7 +167,7 @@ describe('Basic Suite', () => {
       expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeClass-Number' }).orFail();
-      expect(foundTracker.count).toEqual(2);
+      expect(foundTracker.count).toEqual(2n);
     });
 
     it('Basic Function Mongoose (BigInt)', async () => {
@@ -184,7 +215,7 @@ describe('Basic Suite', () => {
       expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeModel-BigInt' }).orFail();
-      expect(foundTracker.count).toEqual(2);
+      expect(foundTracker.count).toEqual(2n);
     });
 
     it('Basic Function Typegoose (BigInt)', async () => {
@@ -237,7 +268,7 @@ describe('Basic Suite', () => {
       expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-SomeClass-BigInt' }).orFail();
-      expect(foundTracker.count).toEqual(2);
+      expect(foundTracker.count).toEqual(2n);
     });
 
     it('Basic Function Mongoose With startAt', async () => {
@@ -364,7 +395,7 @@ describe('Basic Suite', () => {
       expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'TestOverwrite' }).orFail();
-      expect(foundTracker.count).toEqual(2);
+      expect(foundTracker.count).toEqual(2n);
     });
 
     it('should use modelName if "overwriteModelName" is falsy', async () => {
@@ -387,7 +418,7 @@ describe('Basic Suite', () => {
       expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-EOMN' }).orFail();
-      expect(foundTracker.count).toEqual(0);
+      expect(foundTracker.count).toEqual(0n);
     });
 
     it('should support "overwriteModelName" being a function', async () => {
@@ -424,7 +455,7 @@ describe('Basic Suite', () => {
       expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-OMNF-test' }).orFail();
-      expect(foundTracker.count).toEqual(0);
+      expect(foundTracker.count).toEqual(0n);
     });
 
     it('should throw a error if "overwriteModelName" is a function but returns a empty string', async () => {
