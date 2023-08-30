@@ -103,18 +103,15 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
     throw new Error(`Field "${opt.field}" is not a Number or BigInt!`);
   }
 
-  // update types if field is BigInt
-  if (schemaField.instance === 'BigInt') {
-    opt.incrementBy = BigInt(opt.incrementBy);
-    opt.startAt = BigInt(opt.startAt);
-  }
-
   let model: mongoose.Model<AutoIncrementIDTrackerSpec>;
 
   logger.info('AutoIncrementID called with options %O', opt);
 
   schema.pre('save', async function AutoIncrementPreSaveID(): Promise<void> {
     logger.info('AutoIncrementID PreSave');
+
+    opt.incrementBy = BigInt(opt.incrementBy);
+    opt.startAt = BigInt(opt.startAt);
 
     const originalModelName: string = (this.constructor as any).modelName;
     let modelName: string;
@@ -144,22 +141,10 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
         .exec();
 
       if (!counter) {
-        let newCount: bigint = 0n;
-
-        // need to explicitly type check since subtraction is not supported on union number types
-        if (typeof opt.startAt === 'bigint' && typeof opt.incrementBy === 'bigint') {
-          newCount = opt.startAt - opt.incrementBy;
-        } else if (typeof opt.startAt === 'number' && typeof opt.incrementBy === 'number') {
-          newCount = BigInt(opt.startAt - opt.incrementBy);
-        } else {
-          // this should never happen, but checking anyway
-          throw new Error(`Field "${opt.field}" has mismatched "startAt" and "incrementBy" types!`);
-        }
-
         await model.create({
           modelName: modelName,
           field: opt.field,
-          count: newCount,
+          count: opt.startAt - opt.incrementBy,
         });
       }
     }
