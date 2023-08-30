@@ -58,5 +58,5 @@ export interface AutoIncrementIDTrackerSpec {
   /** The field in the schema */
   field: string;
   /** Current Tracker count */
-  count: number;
+  count: bigint;
 }
