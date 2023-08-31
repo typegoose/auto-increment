@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Basic Suite AutoIncrementID should Error if the schema field is not an number 1`] = `"Field \\"nonNumberField\\" is not a Number or BigInt!"`;
+
 exports[`Basic Suite AutoIncrementID should throw a error if "overwriteModelName" is a function but returns a empty string 1`] = `"\\"overwriteModelname\\" is a function, but did return a falsy type or is not a string!"`;
 
 exports[`Basic Suite AutoIncrementID should throw a error if "overwriteModelName" is a function but returns not a string 1`] = `"\\"overwriteModelname\\" is a function, but did return a falsy type or is not a string!"`;

@@ -550,5 +550,12 @@ describe('Basic Suite', () => {
         expect(err.message).toMatchSnapshot();
       }
     });
+
+    it('should Error if the schema field is not an number', () => {
+      const schema = new mongoose.Schema({
+        nonNumberField: String,
+      });
+      expect(() => schema.plugin(AutoIncrementID, { field: 'nonNumberField' })).toThrowErrorMatchingSnapshot();
+    });
   });
 });
