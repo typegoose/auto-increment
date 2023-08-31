@@ -533,4 +533,11 @@ describe('Errors', () => {
     });
     expect(() => schema.plugin(AutoIncrementSimple, { field: 'nonNumberField' })).toThrowErrorMatchingSnapshot();
   });
+
+  it('should Error if no field is given to AutoIncrementSimple', () => {
+    const schema = new mongoose.Schema({
+      nonNumberField: String,
+    });
+    expect(() => schema.plugin(AutoIncrementSimple, [])).toThrowErrorMatchingSnapshot();
+  });
 });
