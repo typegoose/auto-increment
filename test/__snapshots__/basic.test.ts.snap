@@ -6,6 +6,8 @@ exports[`Basic Suite AutoIncrementID should throw a error if "overwriteModelName
 
 exports[`Errors should Error if no field is given to AutoIncrementSimple 1`] = `"Options with at least one field are required!"`;
 
+exports[`Errors should Error if no field is given to AutoIncrementSimple 2`] = `"Got Field object, but did not contain a \\"field\\" key with \\"string\\" value, got: {}"`;
+
 exports[`Errors should Error if the schema path does not exist 1`] = `"Field \\"SomeNonExistingField\\" does not exists on the Schema!"`;
 
 exports[`Errors should Error if the schema path is not an number 1`] = `"Field \\"nonNumberField\\" is not a Number or BigInt!"`;

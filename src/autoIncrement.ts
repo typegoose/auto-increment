@@ -32,6 +32,10 @@ export function AutoIncrementSimple(
 
   // check if all fields are valid
   for (const field of fields) {
+    if (typeof field.field != 'string') {
+      throw new Error(`Got Field object, but did not contain a "field" key with "string" value, got: ${JSON.stringify(field)}`);
+    }
+
     const schemaField = schema.path(field.field);
 
     // check if the field is even existing
