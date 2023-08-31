@@ -1,7 +1,7 @@
 import { getModelForClass, modelOptions, plugin, prop } from '@typegoose/typegoose';
 import { assertion } from '@typegoose/typegoose/lib/internal/utils';
 import * as mongoose from 'mongoose';
-import { AutoIncrementID, AutoIncrementSimple } from '../src/autoIncrement';
+import { AutoIncrementID, AutoIncrementIDSkipSymbol, AutoIncrementSimple } from '../src/autoIncrement';
 
 describe('Basic Suite', () => {
   describe('AutoIncrementSimple', () => {
@@ -488,6 +488,59 @@ describe('Basic Suite', () => {
 
       const foundTracker = await trackerModel.findOne({ modelName: 'AutoIncrementID-OMNF-test' }).orFail();
       expect(foundTracker.count).toEqual(0n);
+    });
+
+    it('should support skipping with symbol', async () => {
+      const schema = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema.plugin(AutoIncrementID, {});
+      const model = mongoose.model('AutoIncrementID-SomeModel-skiptest', schema);
+
+      // test initial 0
+      {
+        const doc = await model.create({ somefield: 10 });
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
+
+        await doc.save();
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
+      }
+
+      // test add 1
+      {
+        // skip only works with the current document, not globally, so ".create" will not work
+        // because using model.create({ _id: 300, somefield: 20, [AutoIncrementIDSkipSymbol]: true })
+        // does not transfer symbols
+        const doc = new model({ _id: 300, somefield: 20 });
+        doc[AutoIncrementIDSkipSymbol] = true;
+        await doc.save();
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(300);
+
+        await doc.save();
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(300);
+      }
+
+      // test add another 1
+      {
+        const doc = await model.create({ somefield: 30 });
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(1);
+
+        await doc.save();
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(1);
+      }
+
+      const trackerModel = mongoose.connection.models['identitycounter'];
+      expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
+
+      const foundTracker = await trackerModel.findOne({ modelName: model.modelName }).orFail();
+      expect(foundTracker.count).toEqual(1n);
     });
 
     it('should throw a error if "overwriteModelName" is a function but returns a empty string', async () => {

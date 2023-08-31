@@ -139,7 +139,8 @@ doc[AutoIncrementIDSkipSymbol] = true;
 await doc.save();
 ```
 
-Note: `AutoIncrementIDSkipSymbol` can also be set inside hooks, but hooks might be called before others.
+Note: `AutoIncrementIDSkipSymbol` can also be set inside hooks, but hooks might be called before others.  
+Note: `AutoIncrementIDSkipSymbol` cannot be used for `.create`, because `AutoIncrementIDSkipSymbol` works on the current document and `.create({ [AutoIncrementIDSkipSymbol]: true })` will not transfer symbols to the document
 
 #### incrementBy
 
