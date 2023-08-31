@@ -166,6 +166,14 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
+    const ownerDocDb = this.db ?? (this as any).ownerDocument().db;
+
+    if (typeof ownerDocDb[AutoIncrementIDSkipSymbol] == 'boolean' && ownerDocDb[AutoIncrementIDSkipSymbol]) {
+      logger.info('Symbol "AutoIncrementIDSkipSymbol" is set on the connection to "true", skipping');
+
+      return;
+    }
+
     const leandoc = await model
       .findOneAndUpdate(
         {

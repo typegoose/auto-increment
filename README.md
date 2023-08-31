@@ -137,10 +137,19 @@ const doc = new Model();
 
 doc[AutoIncrementIDSkipSymbol] = true;
 await doc.save();
+
+// the symbol can also be set on the connection
+Model.db[AutoIncrementIDSkipSymbol] = true;
+await Model.create({ _id: something });
+// dont forget to unset it again
+Model.db[AutoIncrementIDSkipSymbol] = true;
+// or
+delete Model.db[AutoIncrementIDSkipSymbol];
 ```
 
 Note: `AutoIncrementIDSkipSymbol` can also be set inside hooks, but hooks might be called before others.  
-Note: `AutoIncrementIDSkipSymbol` cannot be used for `.create`, because `AutoIncrementIDSkipSymbol` works on the current document and `.create({ [AutoIncrementIDSkipSymbol]: true })` will not transfer symbols to the document
+Note: `AutoIncrementIDSkipSymbol` cannot be used for `.create` (unless set via connection), because `AutoIncrementIDSkipSymbol` works on the current document and `.create({ [AutoIncrementIDSkipSymbol]: true })` will not transfer symbols to the document.  
+Note: if `AutoIncrementIDSkipSymbol` is set to `false` on either method, no modification will be done
 
 #### incrementBy
 

@@ -543,6 +543,57 @@ describe('Basic Suite', () => {
       expect(foundTracker.count).toEqual(1n);
     });
 
+    it('should support skipping with symbol on the connection', async () => {
+      const schema = new mongoose.Schema({
+        _id: Number,
+        somefield: Number,
+      });
+      schema.plugin(AutoIncrementID, {});
+      const model = mongoose.model('AutoIncrementID-SomeModel-skiptest-connection', schema);
+
+      // test initial 0
+      {
+        const doc = await model.create({ somefield: 10 });
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
+
+        await doc.save();
+        expect(doc.somefield).toBe(10);
+        expect(doc._id).toBe(0);
+      }
+
+      // test add 1
+      {
+        model.db[AutoIncrementIDSkipSymbol] = true;
+        const doc = await model.create({ _id: 300, somefield: 20 });
+        // IMPORTANT: this has to be unset again so that the next ones are not also affected
+        delete model.db[AutoIncrementIDSkipSymbol];
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(300);
+
+        await doc.save();
+        expect(doc.somefield).toBe(20);
+        expect(doc._id).toBe(300);
+      }
+
+      // test add another 1
+      {
+        const doc = await model.create({ somefield: 30 });
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(1);
+
+        await doc.save();
+        expect(doc.somefield).toBe(30);
+        expect(doc._id).toBe(1);
+      }
+
+      const trackerModel = mongoose.connection.models['identitycounter'];
+      expect(Object.getPrototypeOf(trackerModel)).toStrictEqual(mongoose.Model);
+
+      const foundTracker = await trackerModel.findOne({ modelName: model.modelName }).orFail();
+      expect(foundTracker.count).toEqual(1n);
+    });
+
     it('should throw a error if "overwriteModelName" is a function but returns a empty string', async () => {
       let fcalled = 0;
 
