@@ -66,6 +66,38 @@ describe('Basic Suite', () => {
       await doc.save();
       expect(doc.someIncrementedField).toBe(11n);
     });
+
+    it('should Error if the schema path does not exist', () => {
+      const schema = new mongoose.Schema({});
+      expect(() => schema.plugin(AutoIncrementSimple, { field: 'SomeNonExistingField' })).toThrowErrorMatchingSnapshot();
+    });
+
+    it('should Error if the schema path is not an number', () => {
+      const schema = new mongoose.Schema({
+        nonNumberField: String,
+      });
+      expect(() => schema.plugin(AutoIncrementSimple, { field: 'nonNumberField' })).toThrowErrorMatchingSnapshot();
+    });
+
+    it('should Error if no field is given to AutoIncrementSimple', () => {
+      const schema = new mongoose.Schema({
+        nonNumberField: String,
+      });
+      expect(() => schema.plugin(AutoIncrementSimple, [])).toThrowErrorMatchingSnapshot();
+    });
+
+    it('should Error if no field is given to AutoIncrementSimple', () => {
+      const schema = new mongoose.Schema({
+        nonNumberField: String,
+      });
+      expect(() =>
+        schema.plugin(
+          AutoIncrementSimple,
+          // @ts-expect-error TEST
+          {}
+        )
+      ).toThrowErrorMatchingSnapshot();
+    });
   });
 
   describe('AutoIncrementID', () => {
@@ -518,39 +550,5 @@ describe('Basic Suite', () => {
         expect(err.message).toMatchSnapshot();
       }
     });
-  });
-});
-
-describe('Errors', () => {
-  it('should Error if the schema path does not exist', () => {
-    const schema = new mongoose.Schema({});
-    expect(() => schema.plugin(AutoIncrementSimple, { field: 'SomeNonExistingField' })).toThrowErrorMatchingSnapshot();
-  });
-
-  it('should Error if the schema path is not an number', () => {
-    const schema = new mongoose.Schema({
-      nonNumberField: String,
-    });
-    expect(() => schema.plugin(AutoIncrementSimple, { field: 'nonNumberField' })).toThrowErrorMatchingSnapshot();
-  });
-
-  it('should Error if no field is given to AutoIncrementSimple', () => {
-    const schema = new mongoose.Schema({
-      nonNumberField: String,
-    });
-    expect(() => schema.plugin(AutoIncrementSimple, [])).toThrowErrorMatchingSnapshot();
-  });
-
-  it('should Error if no field is given to AutoIncrementSimple', () => {
-    const schema = new mongoose.Schema({
-      nonNumberField: String,
-    });
-    expect(() =>
-      schema.plugin(
-        AutoIncrementSimple,
-        // @ts-expect-error TEST
-        {}
-      )
-    ).toThrowErrorMatchingSnapshot();
   });
 });
