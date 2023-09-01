@@ -1,3 +1,30 @@
+## [3.5.0](https://github.com/typegoose/auto-increment/compare/v3.4.0...v3.5.0) (2023-09-01)
+
+
+### Features
+
+* **AutoIncrementID:** support setting "AutoIncrementIDSkipSymbol" on the connection ([6d2f447](https://github.com/typegoose/auto-increment/commit/6d2f447e3817cd10316f4d4b8608037b0195d252))
+* support for BigInt field types ([#21](https://github.com/typegoose/auto-increment/issues/21)) ([24add0b](https://github.com/typegoose/auto-increment/commit/24add0be6f56adc6c915a8d45c71057c0e4fa165))
+
+
+### Fixes
+
+* **AutoIncrementSimple:** add error when there is no "field" key in field object ([7e61178](https://github.com/typegoose/auto-increment/commit/7e6117895c395509675b37dfc5d04fa8b5438215))
+
+
+### Dependencies
+
+* **@types/jest:** upgrade to 29.5.4 ([e25b025](https://github.com/typegoose/auto-increment/commit/e25b025f60f5a862fcbd07166e313f65153f96ec))
+* **@types/node:** upgrade to 14.18.56 ([201c5fb](https://github.com/typegoose/auto-increment/commit/201c5fbc00cad2849810d3cab1fa57a0b8981518))
+* **@typescript-eslint/*:** upgrade to 5.62.0 ([72097bb](https://github.com/typegoose/auto-increment/commit/72097bb34d659126feecbbdfc50b4ffe944cf670))
+* **commitlint:** upgrade to 17.7.1 ([46eca6c](https://github.com/typegoose/auto-increment/commit/46eca6cf9c4ab8f3d7f3f0b7610b3bbd7d991835))
+* **eslint-config-prettier:** upgrade to 8.10.0 ([0e443ce](https://github.com/typegoose/auto-increment/commit/0e443ce6aa491eb4b309583a1cd1f080124d1d3e))
+* **eslint:** upgrade to 8.48.0 ([45979b5](https://github.com/typegoose/auto-increment/commit/45979b576fbc5affe2eb49d531e01c50b3b9cdc1))
+* **jest:** upgrade to 29.6.4 ([5bcb17c](https://github.com/typegoose/auto-increment/commit/5bcb17c5f961fe1f3818dca02478849eba13c6ed))
+* **mongodb-memory-server:** upgrade to 8.15.1 ([d83775b](https://github.com/typegoose/auto-increment/commit/d83775be0ad5ab490b5550ad9bbc032c9fa8899a))
+* **mongoose:** upgrade to 7.5.0 ([1c4d532](https://github.com/typegoose/auto-increment/commit/1c4d5321b3131cc1e5430caecf8d7e09f1a9aaf7))
+* **tslib:** upgrade to 2.6.2 ([474d19b](https://github.com/typegoose/auto-increment/commit/474d19b56e1cb26e15b666e09649a8f5496f5bbc))
+
 ## [3.4.0](https://github.com/typegoose/auto-increment/compare/v3.3.0...v3.4.0) (2023-07-19)
 
 
