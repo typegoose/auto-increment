@@ -7,7 +7,7 @@ export interface AutoIncrementOptionsSimple {
    * How much to increment the field by
    * @default 1
    */
-  incrementBy?: number;
+  incrementBy?: number | bigint;
 }
 
 export type AutoIncrementSimplePluginOptions = AutoIncrementOptionsSimple | AutoIncrementOptionsSimple[];
@@ -17,7 +17,7 @@ export interface AutoIncrementIDOptions {
    * How much to increment the field by
    * @default 1
    */
-  incrementBy?: number;
+  incrementBy?: number | bigint;
   /**
    * Set the field to increment
    * -> Only use this if it is not "_id"
@@ -38,7 +38,7 @@ export interface AutoIncrementIDOptions {
    * the count should start at
    * @default 0
    */
-  startAt?: number;
+  startAt?: number | bigint;
   /**
    * Overwrite what to use for the `modelName` property in the tracker document
    * This can be overwritten when wanting to use a single tracker for multiple models
@@ -58,5 +58,5 @@ export interface AutoIncrementIDTrackerSpec {
   /** The field in the schema */
   field: string;
   /** Current Tracker count */
-  count: number;
+  count: bigint;
 }

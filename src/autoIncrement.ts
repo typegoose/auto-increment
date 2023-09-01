@@ -39,13 +39,18 @@ export function AutoIncrementSimple(
       throw new Error(`Field "${field.field}" does not exists on the Schema!`);
     }
     // check if the field is an number
-    if (!(schemaField instanceof mongoose.Schema.Types.Number)) {
-      throw new Error(`Field "${field.field}" is not an SchemaNumber!`);
+    if (schemaField.instance !== 'Number' && schemaField.instance !== 'BigInt') {
+      throw new Error(`Field "${field.field}" is not a Number or BigInt!`);
     }
 
     if (isNullOrUndefined(field.incrementBy)) {
       logger.info('Field "%s" does not have an incrementBy defined, defaulting to %d', field.field, DEFAULT_INCREMENT);
-      field.incrementBy = DEFAULT_INCREMENT;
+
+      if (schemaField.instance === 'BigInt') {
+        field.incrementBy = BigInt(DEFAULT_INCREMENT);
+      } else {
+        field.incrementBy = DEFAULT_INCREMENT;
+      }
     }
   }
   // to have an name to the function if debugging
@@ -65,7 +70,7 @@ const IDSchema = new mongoose.Schema<AutoIncrementIDTrackerSpec>(
   {
     field: String,
     modelName: String,
-    count: Number,
+    count: BigInt,
   },
   { versionKey: false }
 );
@@ -92,8 +97,10 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
   };
 
   // check if the field is an number
-  if (!(schema.path(opt.field) instanceof mongoose.Schema.Types.Number)) {
-    throw new Error(`Field "${opt.field}" is not an SchemaNumber!`);
+  const schemaField = schema.path(opt.field);
+
+  if (schemaField.instance !== 'Number' && schemaField.instance !== 'BigInt') {
+    throw new Error(`Field "${opt.field}" is not a Number or BigInt!`);
   }
 
   let model: mongoose.Model<AutoIncrementIDTrackerSpec>;
@@ -102,6 +109,9 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
 
   schema.pre('save', async function AutoIncrementPreSaveID(): Promise<void> {
     logger.info('AutoIncrementID PreSave');
+
+    opt.incrementBy = BigInt(opt.incrementBy);
+    opt.startAt = BigInt(opt.startAt);
 
     const originalModelName: string = (this.constructor as any).modelName;
     let modelName: string;

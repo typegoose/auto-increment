@@ -6,4 +6,4 @@ exports[`Basic Suite AutoIncrementID should throw a error if "overwriteModelName
 
 exports[`Errors should Error if the schema path does not exist 1`] = `"Field \\"SomeNonExistingField\\" does not exists on the Schema!"`;
 
-exports[`Errors should Error if the schema path is not an number 1`] = `"Field \\"nonNumberField\\" is not an SchemaNumber!"`;
+exports[`Errors should Error if the schema path is not an number 1`] = `"Field \\"nonNumberField\\" is not a Number or BigInt!"`;
