@@ -14,6 +14,7 @@ module.exports = {
           {type: 'perf', release: 'patch'},
           {type: 'test', release: false},
           {type: 'chore', release: false},
+          {type: 'devdeps', release: false},
           {type: 'deps', release: 'minor'},
           {type: 'revert', release: 'patch'},
           // dont trigger another release on release commit
@@ -39,6 +40,7 @@ module.exports = {
             {type: 'test', hidden: true},
             {type: 'chore', hidden: true},
             {type: 'deps', section: 'Dependencies'},
+            {type: 'devdeps', section: 'Dev-Dependencies'},
             {type: 'revert', section: 'Reverts'},
             {type: 'release', hidden: true}
           ]
