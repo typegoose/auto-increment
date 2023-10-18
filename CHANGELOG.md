@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/typegoose/auto-increment/compare/v3.6.0...v3.6.1) (2023-10-18)
+
+
+### Fixes
+
+* fix mongoose peer-dependency again to what is mentioned in the 3.6.0 release ([bd7c5d0](https://github.com/typegoose/auto-increment/commit/bd7c5d010019c6aff4a7fcf253c383ea1675e97e)), closes [#23](https://github.com/typegoose/auto-increment/issues/23)
+
 ## [3.6.0](https://github.com/typegoose/auto-increment/compare/v3.5.0...v3.6.0) (2023-10-10)
 
 
