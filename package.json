@@ -30,7 +30,7 @@
   "contributors": [],
   "license": "MIT",
   "peerDependencies": {
-    "mongoose": "~7.5.0"
+    "mongoose": "~7.6.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
