@@ -1,6 +1,6 @@
 {
   "name": "@typegoose/auto-increment",
-  "version": "3.6.1",
+  "version": "4.0.0",
   "description": "Automaticly Increment properties",
   "main": "lib/autoIncrement.js",
   "types": "lib/autoIncrement.d.ts",

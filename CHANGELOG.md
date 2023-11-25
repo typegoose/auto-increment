@@ -1,3 +1,31 @@
+## [4.0.0](https://github.com/typegoose/auto-increment/compare/v3.6.1...v4.0.0) (2023-11-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* **mongoose:** mongoose v8 is now used
+* **tsconfig:** The tsconfig target is now "es2021"
+* The minimal NodeJS version is now 16.20.1
+
+* **tsconfig:** update target to "es2021" ([d58205c](https://github.com/typegoose/auto-increment/commit/d58205c85600b016120b3af80d3a4bbfaa8b7f65))
+* upgrade to nodejs 16 ([b1eb0e6](https://github.com/typegoose/auto-increment/commit/b1eb0e6cbf57dea6df78ef00fa49c4da739bd02e))
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.0.1 ([110fbd0](https://github.com/typegoose/auto-increment/commit/110fbd0ffee74231ef3ab058eb0c14e240e16a75)), closes [#25](https://github.com/typegoose/auto-increment/issues/25)
+
+
+### Dev-Dependencies
+
+* **@types/jest:** upgrade to 29.5.10 ([0a81b30](https://github.com/typegoose/auto-increment/commit/0a81b30e01b37a8c2e29996baf1342e38d69b591))
+* **@types/node:** upgrade to 16.11.7 ([435e9d9](https://github.com/typegoose/auto-increment/commit/435e9d9673c5684374a43e6bb8cfb7482de62d71))
+* **eslint-plugin-prettier:** upgrade to 5.0.1 ([59ce90c](https://github.com/typegoose/auto-increment/commit/59ce90c2ef5dd32795a3695251efdf13fefdcaaa))
+* **eslint:** upgrade to 8.54.0 ([0ae4787](https://github.com/typegoose/auto-increment/commit/0ae47871472aaa31029babf23a56e254b92a0515))
+* **lint-staged:** upgrade to 14.0.1 ([151c9ce](https://github.com/typegoose/auto-increment/commit/151c9ceda9fafe85d02e2c860653ff6f7c52c4b9))
+* **mongodb-memory-server:** upgrade to 9.1.1 ([b04dbfe](https://github.com/typegoose/auto-increment/commit/b04dbfeeba476121e39376a343a85cabf78692db))
+* **prettier:** upgrade to 3.1.0 ([2ecb5e7](https://github.com/typegoose/auto-increment/commit/2ecb5e77b2e939e600c9e3a5e6ab08ec731fbd47))
+
 ## [3.6.1](https://github.com/typegoose/auto-increment/compare/v3.6.0...v3.6.1) (2023-10-18)
 
 
