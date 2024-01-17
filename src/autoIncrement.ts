@@ -63,7 +63,9 @@ export function AutoIncrementSimple(
       logger.info('Starting to increment "%s"', (this.constructor as mongoose.Model<any>).modelName);
       for (const field of fields) {
         logger.info('Incrementing "%s" by %d', field.field, field.incrementBy);
-        this[field.field] += field.incrementBy;
+        // "this as any" is required because mongoose sets a document to default to "unknown" if not explicitly set for hooks
+        // but in this case it should work just fine
+        (this as any)[field.field] += field.incrementBy as NonNullable<(typeof field)['incrementBy']>;
       }
     }
   });
