@@ -1,3 +1,19 @@
+## [4.2.0](https://github.com/typegoose/auto-increment/compare/v4.1.0...v4.2.0) (2024-02-23)
+
+
+### Dependencies
+
+* **loglevel:** upgrade to 1.9.1 ([ff0de90](https://github.com/typegoose/auto-increment/commit/ff0de906434893bf0e3346ff53039787dc96bcaf))
+* **mongoose:** upgrade to 8.2.0 ([2c0c6e7](https://github.com/typegoose/auto-increment/commit/2c0c6e7ac7807520137d1726feb6c057e43484b3))
+
+
+### Dev-Dependencies
+
+* **@types/jest:** upgrade to 29.5.12 ([a8db378](https://github.com/typegoose/auto-increment/commit/a8db378dc465ad3bfbeb429b1c893463e2d66ec8))
+* **mongodb-memory-server:** upgrade to 9.1.6 ([9e53646](https://github.com/typegoose/auto-increment/commit/9e53646d1ecee23efb422e7ba098bd2b1acceb59))
+* **prettier:** upgrade to 3.2.5 ([3ce1f70](https://github.com/typegoose/auto-increment/commit/3ce1f702918cb7de3168aa09b95bff2256168ddd))
+* **ts-jest:** upgrade to 29.1.2 ([082f450](https://github.com/typegoose/auto-increment/commit/082f45005ad41f8ba445e6f1506782e33ca52454))
+
 ## [4.1.0](https://github.com/typegoose/auto-increment/compare/v4.0.0...v4.1.0) (2024-01-17)
 
 
