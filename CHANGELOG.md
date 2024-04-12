@@ -1,3 +1,15 @@
+## [4.3.0](https://github.com/typegoose/auto-increment/compare/v4.2.0...v4.3.0) (2024-04-12)
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.3.1 ([c21702c](https://github.com/typegoose/auto-increment/commit/c21702cab84e09d5c3c2175838e78f9a0e33e33d))
+
+
+### Dev-Dependencies
+
+* **mongodb-memory-server:** upgrade to 9.1.8 ([71fa0d5](https://github.com/typegoose/auto-increment/commit/71fa0d56f817f42e5fade9c0398f58e706cf86c1))
+
 ## [4.2.0](https://github.com/typegoose/auto-increment/compare/v4.1.0...v4.2.0) (2024-02-23)
 
 
