@@ -30,12 +30,12 @@
   "contributors": [],
   "license": "MIT",
   "peerDependencies": {
-    "mongoose": "~8.2.0"
+    "mongoose": "~8.3.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",
     "@commitlint/config-conventional": "^17.8.1",
-    "@typegoose/typegoose": "~12.2.0",
+    "@typegoose/typegoose": "~12.4.0-beta.1",
     "@types/jest": "^29.5.12",
     "@types/node": "~16.11.7",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
@@ -48,7 +48,7 @@
     "jest": "^29.7.0",
     "lint-staged": "^14.0.1",
     "mongodb-memory-server": "^9.1.8",
-    "mongoose": "~8.2.0",
+    "mongoose": "~8.3.1",
     "prettier": "^3.2.5",
     "rimraf": "5.0.5",
     "ts-jest": "^29.1.2",
