@@ -35,12 +35,6 @@
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",
     "@commitlint/config-conventional": "^17.8.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^9.0.2",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^8.1.0",
-    "@semantic-release/npm": "^9.0.2",
-    "@semantic-release/release-notes-generator": "^10.0.3",
     "@typegoose/typegoose": "~12.2.0",
     "@types/jest": "^29.5.12",
     "@types/node": "~16.11.7",
@@ -57,7 +51,6 @@
     "mongoose": "~8.2.0",
     "prettier": "^3.2.5",
     "rimraf": "5.0.5",
-    "semantic-release": "^19.0.5",
     "ts-jest": "^29.1.2",
     "typescript": "~5.3.3"
   },
