@@ -11,6 +11,11 @@ on:
     #   - 'test/**'
     #   - '*.json' # run if an ".json" file in the *root* of the repository is changed
 
+env:
+  # Download mongodb binaries to ~/.cache/mongodb-binaries instead of local node_modules
+  # Used for separate cache
+  MONGOMS_PREFER_GLOBAL_PATH: true
+
 jobs:
   tests:
     runs-on: ubuntu-latest
