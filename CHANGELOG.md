@@ -1,3 +1,17 @@
+## [4.4.0](https://github.com/typegoose/auto-increment/compare/v4.3.0...v4.4.0) (2024-05-19)
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.4.0 ([51a15c8](https://github.com/typegoose/auto-increment/commit/51a15c8bedcaef4681b0e39dc594ff4c526ad305))
+
+
+### Dev-Dependencies
+
+* **@typegoose/typegoose:** upgrade to 12.4.0 ([a53528f](https://github.com/typegoose/auto-increment/commit/a53528f1ab6f5a522e065f760922f38019205d3f))
+* **mongodb-memory-server:** upgrade to 9.2.0 ([70ab36c](https://github.com/typegoose/auto-increment/commit/70ab36cb7ad197779610e3321ff8635c6536d48a))
+* **rimraf:** upgrade to 5.0.7 ([9f3ea89](https://github.com/typegoose/auto-increment/commit/9f3ea89816446059b86689d9ada823c091523775))
+
 ## [4.3.0](https://github.com/typegoose/auto-increment/compare/v4.2.0...v4.3.0) (2024-04-12)
 
 
