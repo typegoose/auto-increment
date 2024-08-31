@@ -1,3 +1,19 @@
+## [4.6.0](https://github.com/typegoose/auto-increment/compare/v4.5.0...v4.6.0) (2024-08-31)
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.6.0 ([434a7a7](https://github.com/typegoose/auto-increment/commit/434a7a772272f03e5c87f65cc282a18c7892b67b))
+* **tslib:** upgrade to 2.7.0 ([90c2564](https://github.com/typegoose/auto-increment/commit/90c256490431da4d3b8c5a80c00db3d392b1f302))
+
+
+### Dev-Dependencies
+
+* **eslint-plugin-prettier:** upgrade to 5.2.1 ([671d5e8](https://github.com/typegoose/auto-increment/commit/671d5e8c1e944d3f450918225bab163c1eb94ea9))
+* **mongodb-memory-server:** upgrade to 10.0.0 ([88fd025](https://github.com/typegoose/auto-increment/commit/88fd0256528c09c052fc43d12844701b75e90db0))
+* **prettier:** upgrade to 3.3.3 ([04abcf2](https://github.com/typegoose/auto-increment/commit/04abcf22b47448d6479c10d73611994697b6a92e))
+* **ts-jest:** upgrade to 29.2.5 ([51f0b7a](https://github.com/typegoose/auto-increment/commit/51f0b7a367fdfff75399adb484a05b09c35abff2))
+
 ## [4.5.0](https://github.com/typegoose/auto-increment/compare/v4.4.0...v4.5.0) (2024-07-10)
 
 
