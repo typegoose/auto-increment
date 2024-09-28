@@ -1125,13 +1125,13 @@
   resolved "https://registry.yarnpkg.com/@tsconfig/node16/-/node16-1.0.3.tgz#472eaab5f15c1ffdd7f8628bd4c4f753995ec79e"
   integrity sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==
 
-"@typegoose/typegoose@~12.7.0":
-  version "12.7.0"
-  resolved "https://registry.yarnpkg.com/@typegoose/typegoose/-/typegoose-12.7.0.tgz#9a101f0fefda67ded31eb2d871559439b42525e8"
-  integrity sha512-UOjNlNzzJ4O/Y82I7EV9imBRhmIvZvAOVgmKUEpQbUVF63RrOU8ltHUVd7n/gADD4tZRUzM8siOBXaGY19rTXg==
+"@typegoose/typegoose@~12.8.0":
+  version "12.8.0"
+  resolved "https://registry.yarnpkg.com/@typegoose/typegoose/-/typegoose-12.8.0.tgz#0751a78ae2da406e4503c7e2f319da2412acc928"
+  integrity sha512-YCeYYH0joT4n48WRUfofPq3KBg6OQw1zR6wB4WKflkFYf9SC4P29hf0PlmsiA+hAbubd3Qn51KmkjiUJetJmFQ==
   dependencies:
     lodash "^4.17.20"
-    loglevel "^1.9.1"
+    loglevel "^1.9.2"
     reflect-metadata "^0.2.2"
     semver "^7.6.3"
     tslib "^2.7.0"
@@ -3451,11 +3451,6 @@ log-update@^5.0.1:
     strip-ansi "^7.0.1"
     wrap-ansi "^8.0.1"
 
-loglevel@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.9.1.tgz#d63976ac9bcd03c7c873116d41c2a85bafff1be7"
-  integrity sha512-hP3I3kCrDIMuRwAwHltphhDM1r8i55H33GgqjXbrisuJhF4kRhW1dNuxsRklp4bXl8DSdLaNLuiL4A/LWRfxvg==
-
 loglevel@^1.9.2:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.9.2.tgz#c2e028d6c757720107df4e64508530db6621ba08"
@@ -3651,7 +3646,16 @@ mongodb-memory-server@^10.0.1:
     mongodb-memory-server-core "10.0.1"
     tslib "^2.6.3"
 
-mongodb@6.8.0, mongodb@^6.7.0:
+mongodb@6.9.0:
+  version "6.9.0"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-6.9.0.tgz#743ebfff6b3c14b04ac6e00a55e30d4127d3016d"
+  integrity sha512-UMopBVx1LmEUbW/QE0Hw18u583PEDVQmUmVzzBRH0o/xtE9DBRA5ZYLOjpLIa03i8FXjzvQECJcqoMvCXftTUA==
+  dependencies:
+    "@mongodb-js/saslprep" "^1.1.5"
+    bson "^6.7.0"
+    mongodb-connection-string-url "^3.0.0"
+
+mongodb@^6.7.0:
   version "6.8.0"
   resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-6.8.0.tgz#680450f113cdea6d2d9f7121fe57cd29111fd2ce"
   integrity sha512-HGQ9NWDle5WvwMnrvUxsFYPd3JEbqD3RgABHBQRuoCEND0qzhsd0iH5ypHsf1eJ+sXmvmyKpP+FLOKY8Il7jMw==
@@ -3660,14 +3664,14 @@ mongodb@6.8.0, mongodb@^6.7.0:
     bson "^6.7.0"
     mongodb-connection-string-url "^3.0.0"
 
-mongoose@~8.6.0:
-  version "8.6.0"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-8.6.0.tgz#52a7cc6026c4d49cd14e4a40e6601c44b1186e49"
-  integrity sha512-p6VSbYKvD4ZIabqo8C0kS5eKX1Xpji+opTAIJ9wyuPJ8Y/FblgXSMnFRXnB40bYZLKPQT089K5KU8+bqIXtFdw==
+mongoose@~8.7.0:
+  version "8.7.0"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-8.7.0.tgz#0f5377a4c3099702a5a00f5dccde2a092ca1c3b0"
+  integrity sha512-rUCSF1mMYQXjXYdqEQLLlMD3xbcj2j1/hRn+9VnVj7ipzru/UoUZxlj/hWmteKMAh4EFnDZ+BIrmma9l/0Hi1g==
   dependencies:
     bson "^6.7.0"
     kareem "2.6.3"
-    mongodb "6.8.0"
+    mongodb "6.9.0"
     mpath "0.9.0"
     mquery "5.0.0"
     ms "2.1.3"
