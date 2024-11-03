@@ -1,3 +1,17 @@
+## [4.8.0](https://github.com/typegoose/auto-increment/compare/v4.7.0...v4.8.0) (2024-11-03)
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.8.0 ([671a23c](https://github.com/typegoose/auto-increment/commit/671a23c61a41450ff566840d7e2136ec7e8d7cce))
+* **tslib:** upgrade to 2.8.1 ([7ed8631](https://github.com/typegoose/auto-increment/commit/7ed86310a91577a33442612888b03226485ace54))
+
+
+### Dev-Dependencies
+
+* **@types/jest:** upgrade to 29.5.14 ([2b739dd](https://github.com/typegoose/auto-increment/commit/2b739dde541109784010be238cf967d2a5d73925))
+* **mongodb-memory-server:** upgrade to 10.1.2 ([314c70e](https://github.com/typegoose/auto-increment/commit/314c70ea7d4fa74c28f7d49f08fa6bf6ff7fe238))
+
 ## [4.7.0](https://github.com/typegoose/auto-increment/compare/v4.6.0...v4.7.0) (2024-09-28)
 
 
