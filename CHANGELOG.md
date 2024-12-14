@@ -1,3 +1,25 @@
+## [4.9.0](https://github.com/typegoose/auto-increment/compare/v4.8.0...v4.9.0) (2024-12-14)
+
+
+### Fixes
+
+* **logSettings:** re-export used functions explicitly ([127681b](https://github.com/typegoose/auto-increment/commit/127681bf576e98e20356e1714671a7929247c4a8))
+
+
+### Style
+
+* **autoIncrement::mongoose:** change import style to use default imports ([90eb2e7](https://github.com/typegoose/auto-increment/commit/90eb2e7d24036bb0cad512db9d1f250c49b80361))
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.9.0 ([08ab16e](https://github.com/typegoose/auto-increment/commit/08ab16e049fcb4ca066144d8ec7ee9cec0b7765d))
+
+
+### Dev-Dependencies
+
+* **prettier:** upgrade to 3.4.2 ([09bb29f](https://github.com/typegoose/auto-increment/commit/09bb29fa71c4d6531312be6c7a832ee3703ce96d))
+
 ## [4.8.0](https://github.com/typegoose/auto-increment/compare/v4.7.0...v4.8.0) (2024-11-03)
 
 
