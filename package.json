@@ -35,7 +35,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",
     "@commitlint/config-conventional": "^17.8.1",
-    "@typegoose/typegoose": "~12.10.0",
+    "@typegoose/typegoose": "~12.10.1",
     "@types/jest": "^29.5.14",
     "@types/node": "~16.11.7",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
