@@ -1,3 +1,10 @@
+## [4.9.1](https://github.com/typegoose/auto-increment/compare/v4.9.0...v4.9.1) (2025-02-08)
+
+
+### Fixes
+
+* **logSettings:** actually allow more levels than "warn" and "error" ([db321bd](https://github.com/typegoose/auto-increment/commit/db321bd1aa0bef7fd3fbfa89615037e87e94e0be))
+
 ## [4.9.0](https://github.com/typegoose/auto-increment/compare/v4.8.0...v4.9.0) (2024-12-14)
 
 
