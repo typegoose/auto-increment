@@ -1,3 +1,16 @@
+## [4.10.0](https://github.com/typegoose/auto-increment/compare/v4.9.1...v4.10.0) (2025-02-08)
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.10.0 ([573f499](https://github.com/typegoose/auto-increment/commit/573f499bfe731a7b2019589e2e0063db6aaf8d7c))
+
+
+### Dev-Dependencies
+
+* **eslint-plugin-prettier:** upgrade to 5.2.3 ([8ead51a](https://github.com/typegoose/auto-increment/commit/8ead51af3a198bc013179689acd9ce1a1863dfb2))
+* **mongodb-memory-server:** upgrade to 10.1.3 ([1ea230c](https://github.com/typegoose/auto-increment/commit/1ea230c0c461252707dd919b6183417e69df30ef))
+
 ## [4.9.1](https://github.com/typegoose/auto-increment/compare/v4.9.0...v4.9.1) (2025-02-08)
 
 
