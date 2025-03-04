@@ -1,3 +1,15 @@
+## [4.12.0](https://github.com/typegoose/auto-increment/compare/v4.11.0...v4.12.0) (2025-03-04)
+
+
+### Dependencies
+
+* **mongoose:** upgrade to 8.12.0 ([af9beeb](https://github.com/typegoose/auto-increment/commit/af9beebff2e978efcd96e9b334bdfb12c20cb7f2))
+
+
+### Dev-Dependencies
+
+* **prettier:** upgrade to 3.5.3 ([38ae4e6](https://github.com/typegoose/auto-increment/commit/38ae4e6db6ec8fb18470dae0d16481edd6a86299))
+
 ## [4.11.0](https://github.com/typegoose/auto-increment/compare/v4.10.0...v4.11.0) (2025-02-27)
 
 
