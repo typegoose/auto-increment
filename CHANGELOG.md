@@ -1,3 +1,17 @@
+## [4.13.0](https://github.com/typegoose/auto-increment/compare/v4.12.0...v4.13.0) (2025-03-25)
+
+
+### Dependencies
+
+* **mongoose:** unlock minor versions for 8 ([66240ac](https://github.com/typegoose/auto-increment/commit/66240ac54f27fb1be6aada17aef6fe8fa52790b3))
+* **mongoose:** upgrade to 8.13.0 ([36d484e](https://github.com/typegoose/auto-increment/commit/36d484e88047e793642bcaf1fcf1409b6f7ce837))
+
+
+### Dev-Dependencies
+
+* **eslint-plugin-prettier:** upgrade to 5.2.5 ([6f37904](https://github.com/typegoose/auto-increment/commit/6f37904fbc697d87ab2bd8928fde7ccded5b1771))
+* **ts-jest:** upgrade to 29.3.0 ([0393537](https://github.com/typegoose/auto-increment/commit/03935376426fa8048a83aa5675abe42bc11bc79c))
+
 ## [4.12.0](https://github.com/typegoose/auto-increment/compare/v4.11.0...v4.12.0) (2025-03-04)
 
 
