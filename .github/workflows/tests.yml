@@ -3,13 +3,15 @@ name: Node.js Tests
 on:
   pull_request:
   push:
-    branches:
-      - '*'
-      - '!gh-pages'
-    # paths: # only run this deploy if an file in the following directories are changed
-    #   - 'src/**'
-    #   - 'test/**'
-    #   - '*.json' # run if an ".json" file in the *root* of the repository is changed
+    branches-ignore:
+      - 'gh-pages'
+#     paths: # only run this deploy if an file in the following directories are changed
+#       - 'src/**'
+#       - 'test/**'
+#       - '*.json' # run if an ".json" file in the *root* of the repository is changed
+
+permissions:
+  contents: read
 
 env:
   # Download mongodb binaries to ~/.cache/mongodb-binaries instead of local node_modules
@@ -18,6 +20,8 @@ env:
 
 jobs:
   tests:
+    permissions:
+      contents: read  # for actions/checkout to fetch code
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -50,6 +54,11 @@ jobs:
         if: matrix.node-version == '18.x'
         uses: codecov/codecov-action@v3
   publish:
+    permissions:
+      contents: write  # for actions/checkout to fetch code and for semantic-release to push commits, release releases and tags
+      issues: write # for semantic-release to comment on and close issues
+      pull-requests: write # for semantic-release to comment on and close pull requests
+      id-token: write # for semantic-release to enable use of OIDC for npm provenance
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
     needs: [tests]
     runs-on: ubuntu-latest
@@ -82,4 +91,5 @@ jobs:
             @commitlint/config-conventional@19.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # replace with trusted-publishing once available, see https://github.com/semantic-release/npm/issues/958
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
