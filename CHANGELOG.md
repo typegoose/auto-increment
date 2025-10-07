@@ -1,3 +1,10 @@
+## [4.13.1](https://github.com/typegoose/auto-increment/compare/v4.13.0...v4.13.1) (2025-10-07)
+
+
+### Fixes
+
+* enable npm provenance publishing ([939368b](https://github.com/typegoose/auto-increment/commit/939368bb8468fe7f9e6bca2700e82bcf5c87b4c8))
+
 ## [4.13.0](https://github.com/typegoose/auto-increment/compare/v4.12.0...v4.13.0) (2025-03-25)
 
 
