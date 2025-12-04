@@ -63,4 +63,13 @@ module.exports = {
     ],
     '@semantic-release/github'
   ],
+  branches: [
+    // from what I read in the semantic-release configuration and in some issues, the order has to be like this:
+    // other branches
+    // main / upstream branch
+    // prerelease branches
+    { name: 'old\\/(\\d+)(\\.x)', range: "${name.replace(/^old\\//g, '')}", prerelease: false },
+    'master',
+    { name: 'beta', prerelease: true },
+  ],
 };
