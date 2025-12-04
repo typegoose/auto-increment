@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "build:tests": "tsc -p tsconfig.json",
+    "build:tests": "tsc -p tsconfig.buildTests.json",
     "lint": "eslint -c ./eslint.config.mjs \"./**/*.{js,ts,cjs,mjs,cts,mts}\"",
     "test": "jest",
     "test:watch": "jest --watchAll",

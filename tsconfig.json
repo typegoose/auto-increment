@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2023",
+    "target": "ES2023",
     "lib": [
       "esnext"
     ],
@@ -17,7 +17,8 @@
     "importHelpers": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",
@@ -29,6 +30,6 @@
     "*.mjs",
   ],
   "exclude": [
-    "node_modules/**/*"
+    "**/*/node_modules/**/*",
   ]
 }

@@ -1,11 +1,10 @@
 {
   "extends": "./tsconfig.json",
   "exclude": [
-    "test/**/*.ts",
-    "*.js"
+    "*.js",
+    "**/*.test-d.ts"
   ],
   "compilerOptions": {
-    "outDir": "lib",
     "allowJs": false
   }
 }
