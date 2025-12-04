@@ -161,7 +161,6 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
       return;
     }
 
-    // @ts-expect-error mongoose now restrics indexes to "string"
     if (typeof this[AutoIncrementIDSkipSymbol] === 'boolean' && AutoIncrementIDSkipSymbol) {
       logger.info('Symbol "AutoIncrementIDSkipSymbol" is set to "true", skipping');
 
