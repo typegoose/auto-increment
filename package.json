@@ -14,7 +14,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "build:tests": "tsc -p tsconfig.json",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint -c ./.eslintrc.js './**/*.{js,ts}'",
+    "lint": "eslint -c ./eslint.config.mjs \"./**/*.{js,ts,cjs,mjs,cts,mts}\"",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --collectCoverage",
@@ -38,8 +38,7 @@
     "@typegoose/typegoose": "^12.14.0",
     "@types/jest": "^29.5.14",
     "@types/node": "~24.10.0",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
+    "typescript-eslint": "^8.31.1",
     "commitlint": "^20.1.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
