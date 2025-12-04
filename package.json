@@ -52,7 +52,7 @@
     "prettier": "^3.5.3",
     "rimraf": "5.0.7",
     "ts-jest": "^29.3.0",
-    "typescript": "~5.3.3"
+    "typescript": "~5.9.3"
   },
   "dependencies": {
     "loglevel": "^1.9.2",
