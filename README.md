@@ -80,7 +80,7 @@ I started `@typegoose/auto-increment` because `mongoose-auto-increment` and `mon
 
 - Node 20.19.0+
 - TypeScript 5.9+ (older versions could work, but are not tested)
-- mongoose 8.13.0+
+- mongoose 9.0.0+
 
 ## Install
 
