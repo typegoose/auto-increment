@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2021",
+    "target": "ES2023",
     "lib": [
       "esnext"
     ],
@@ -11,19 +11,25 @@
     "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "allowJs": false,
+    "allowJs": true,
     "outDir": "build",
     "inlineSourceMap": true,
     "importHelpers": true,
     "strictBindCallApply": true,
     "strictFunctionTypes": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.ts",
-    "test/**/*.ts"
+    "test/**/*.ts",
+    "*.js",
+    ".*.js",
+    "*.cjs",
+    ".*.cjs",
+    "*.mjs",
   ],
   "exclude": [
-    "node_modules/**/*"
+    "**/*/node_modules/**/*",
   ]
 }

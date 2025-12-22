@@ -1,6 +1,6 @@
 import { getModelForClass, modelOptions, plugin, prop } from '@typegoose/typegoose';
 import { assertion } from '@typegoose/typegoose/lib/internal/utils';
-import * as mongoose from 'mongoose';
+import mongoose from 'mongoose';
 import { AutoIncrementID, AutoIncrementIDSkipSymbol, AutoIncrementSimple } from '../src/autoIncrement';
 
 describe('Basic Suite', () => {

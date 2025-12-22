@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Basic Suite AutoIncrementID should Error if the schema field is not an number 1`] = `"Field \\"nonNumberField\\" is not a Number or BigInt!"`;
 

@@ -1,3 +1,43 @@
+## [5.0.0-beta.1](https://github.com/typegoose/auto-increment/compare/v4.13.1...v5.0.0-beta.1) (2025-12-04)
+
+### ⚠ BREAKING CHANGES
+
+* **mongoose:** mongoose 9.0.0
+* **tsconfig.json:** tsconfig "target" is now "es2023" which could be potentially breaking
+* **package.json:** Minimal NodeJS version is now 20.19.0
+
+### Features
+
+* **package.json:** update nodejs version to 20.19 ([aedf152](https://github.com/typegoose/auto-increment/commit/aedf152953463bd0d96fd5ba28deacc0984bc0a0))
+* **tsconfig.json:** update "target" to match minimal NodeJS capabilities ([d723e29](https://github.com/typegoose/auto-increment/commit/d723e292794a3e8171afc29cd996cdd15b34f923))
+
+### Style
+
+* **autoIncrement:** remove unused ts-expect-error directive ([0691e87](https://github.com/typegoose/auto-increment/commit/0691e871dbb0fa126a04656e6bc3f69d2062331f))
+* migrate to eslint flat config ([42aecc1](https://github.com/typegoose/auto-increment/commit/42aecc13a4b5dbb07fb4e64c86e67b84bd640a44))
+
+### Dependencies
+
+* **mongoose:** upgrade to 9.0.0 ([46a3a56](https://github.com/typegoose/auto-increment/commit/46a3a56521f45a2b62b0992d1bf9a8e81848f845))
+
+### Dev-Dependencies
+
+* **@types/jest:** upgrade to 30.0.0 ([5875131](https://github.com/typegoose/auto-increment/commit/58751310f6e966be3acf90ebc26846e05fd8c1b4))
+* **@types/node:** upgrade to 24.10.0 ([106ebdc](https://github.com/typegoose/auto-increment/commit/106ebdcbd83b8184fab451e578c2a6b8125fa14f))
+* **@typescript-eslint/*:** upgrade to 7.18.0 ([7b47ee9](https://github.com/typegoose/auto-increment/commit/7b47ee91419d96a821d49a3339f93a0a3ee713ba))
+* **@typescript-eslint/*:** upgrade to 8.31.1 ([c89af48](https://github.com/typegoose/auto-increment/commit/c89af48177ad8624ed8424b276b431c7400d5550))
+* **commitlint:** upgrade to 20.1.0 ([892b03e](https://github.com/typegoose/auto-increment/commit/892b03e49bba41fdb17ff16ed132d75e707bfcad))
+* **eslint-config-prettier:** upgrade to 10.1.8 ([c8698b4](https://github.com/typegoose/auto-increment/commit/c8698b46f0e2bd2472e8dcf6331105bab40da8d9))
+* **eslint-plugin-prettier:** upgrade to 5.5.4 ([250af40](https://github.com/typegoose/auto-increment/commit/250af40a96d04ad4fc109a4a5820818b7c18aa14))
+* **eslint:** upgrade to 9.39.1 ([db80884](https://github.com/typegoose/auto-increment/commit/db8088481812fef1d15c25cad5688c5d577187c9))
+* **husky:** upgrade to 9.1.7 ([2eed465](https://github.com/typegoose/auto-increment/commit/2eed465442384d761ec04ad0d7063743e0ddc54a))
+* **jest:** upgrade to 30.2.0 ([fef76e5](https://github.com/typegoose/auto-increment/commit/fef76e5879660803fdee3625cf79298f817a01d7))
+* **lint-staged:** upgrade to 16.2.7 ([5de6901](https://github.com/typegoose/auto-increment/commit/5de69012be0ef1ee432b8c52c530235259819170))
+* **prettier:** upgrade to 3.7.4 ([c27cf03](https://github.com/typegoose/auto-increment/commit/c27cf03c18c7d0d1391ec8740c30ebbd2a2bde4b))
+* **rimraf:** upgrade to 6.1.2 ([98ac22f](https://github.com/typegoose/auto-increment/commit/98ac22f05c149a8bb152557e1f547ff036e0d818))
+* **ts-jest:** upgrade to 29.4.6 ([1e72420](https://github.com/typegoose/auto-increment/commit/1e72420a7f8a586c981cf0d55f9677d8f26fe1c9))
+* **typescript:** upgrade to 5.9.3 ([29ed2c2](https://github.com/typegoose/auto-increment/commit/29ed2c299815a2fdd4008691d00a6c3dfa45ce8a))
+
 ## [4.13.1](https://github.com/typegoose/auto-increment/compare/v4.13.0...v4.13.1) (2025-10-07)
 
 
