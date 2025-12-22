@@ -59,7 +59,7 @@ jobs:
       issues: write # for semantic-release to comment on and close issues
       pull-requests: write # for semantic-release to comment on and close pull requests
       id-token: write # for semantic-release to enable use of OIDC for npm provenance
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta' || startsWith(github.ref, 'refs/heads/old')
     needs: [tests]
     runs-on: ubuntu-latest
     steps:
