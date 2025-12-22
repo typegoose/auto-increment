@@ -1,3 +1,9 @@
+## [4.13.2](https://github.com/typegoose/auto-increment/compare/v4.13.1...v4.13.2) (2025-12-22)
+
+### Fixes
+
+* trigger patch release due to 5.0.0 ([e8edd9e](https://github.com/typegoose/auto-increment/commit/e8edd9e81b08ab76b7d8548522fb1be35d89982d))
+
 ## [4.13.1](https://github.com/typegoose/auto-increment/compare/v4.13.0...v4.13.1) (2025-10-07)
 
 
