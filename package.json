@@ -33,12 +33,12 @@
     "mongoose": "^9.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
     "@typegoose/typegoose": "^13.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "~24.10.0",
-    "commitlint": "^20.1.0",
+    "commitlint": "^20.2.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
