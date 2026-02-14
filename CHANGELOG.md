@@ -1,3 +1,9 @@
+## [5.0.1](https://github.com/typegoose/auto-increment/compare/v5.0.0...v5.0.1) (2026-02-14)
+
+### Fixes
+
+* **autoIncrement:** change "new" option to "returnDocument" ([a523e28](https://github.com/typegoose/auto-increment/commit/a523e28691cbc3bb3277c9bb3e17f81d8e51c5a5)), closes [#33](https://github.com/typegoose/auto-increment/issues/33)
+
 ## [5.0.0](https://github.com/typegoose/auto-increment/compare/v4.13.1...v5.0.0) (2025-12-22)
 
 ### ⚠ BREAKING CHANGES
