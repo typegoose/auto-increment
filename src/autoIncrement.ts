@@ -185,7 +185,7 @@ export function AutoIncrementID(schema: mongoose.Schema<any>, options: AutoIncre
           $inc: { count: opt.incrementBy },
         },
         {
-          new: true,
+          returnDocument: 'after',
           fields: { count: 1, _id: 0 },
           upsert: true,
           setDefaultsOnInsert: true,
