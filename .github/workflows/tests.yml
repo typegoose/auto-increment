@@ -52,7 +52,9 @@ jobs:
           CI: true
       - name: Send codecov.io stats
         if: matrix.node-version == '24.x'
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
   publish:
     permissions:
       contents: write  # for actions/checkout to fetch code and for semantic-release to push commits, release releases and tags
